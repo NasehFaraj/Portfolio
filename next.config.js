@@ -1,5 +1,5 @@
 /** @type {import('next').NextConfig} */
-const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
+const isProduction = process.env.NODE_ENV === "production";
 
 const nextConfig = {
   output: "export",
@@ -7,8 +7,8 @@ const nextConfig = {
   images: {
     unoptimized: true
   },
-  basePath,
-  assetPrefix: basePath || undefined
+  basePath: isProduction ? "/Portfolio" : "",
+  assetPrefix: isProduction ? "/Portfolio/" : undefined
 };
 
 module.exports = nextConfig;
