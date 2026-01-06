@@ -6,6 +6,7 @@ import { GraduationCap, Image as ImageIcon, Trophy, Users } from "lucide-react";
 import Section from "@/components/Section";
 import { siteContent } from "@/content/siteContent";
 import Reveal from "@/components/motion/Reveal";
+import { withBasePath } from "@/lib/withBasePath";
 
 type HighlightsProps = {
   isArabic: boolean;
@@ -157,10 +158,10 @@ export default function Highlights({ isArabic }: HighlightsProps) {
     </div>
   );
 
-  const resolvePublicImage = async (basePath: string) => {
+  const resolvePublicImage = async (assetPath: string) => {
     const extensions = ["png", "jpg", "jpeg", "webp"];
     for (const ext of extensions) {
-      const url = `${basePath}.${ext}`;
+      const url = withBasePath(`${assetPath}.${ext}`);
       try {
         const res = await fetch(url, { method: "HEAD" });
         if (res.ok) {

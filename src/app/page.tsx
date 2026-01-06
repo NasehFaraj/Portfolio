@@ -20,6 +20,7 @@ import Section from "@/components/Section";
 import { siteContent } from "@/content/siteContent";
 import { formatTagLabel } from "@/lib/formatTagLabel";
 import Reveal from "@/components/motion/Reveal";
+import { withBasePath } from "@/lib/withBasePath";
 
 const LANG_KEY = "portfolio:lang";
 
@@ -300,7 +301,7 @@ export default function Home() {
                       </div>
                     ) : (
                       <Image
-                        src={project.logo}
+                        src={withBasePath(project.logo)}
                         alt={project.enTitle}
                         width={48}
                         height={48}
