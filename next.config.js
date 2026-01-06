@@ -7,6 +7,9 @@ const nextConfig = {
   images: {
     unoptimized: true
   },
+  env: {
+    NEXT_PUBLIC_BASE_PATH: isProduction ? "/Portfolio" : ""
+  },
   basePath: isProduction ? "/Portfolio" : "",
   assetPrefix: isProduction ? "/Portfolio/" : undefined
 };
