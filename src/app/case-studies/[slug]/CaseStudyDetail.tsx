@@ -2,9 +2,10 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { motion, useReducedMotion } from "framer-motion";
+import { motion } from "framer-motion";
 import Section from "@/components/Section";
 import type { CaseStudy } from "@/data/caseStudies";
+import { useMotionEnabled } from "@/lib/motion";
 
 const LANG_KEY = "portfolio:lang";
 
@@ -111,7 +112,7 @@ const renderApiHighlights = (
 
 export default function CaseStudyDetail({ caseStudy }: { caseStudy: CaseStudy }) {
   const [language, setLanguage] = useState<Language>("en");
-  const prefersReducedMotion = useReducedMotion();
+  const motionEnabled = useMotionEnabled();
 
   useEffect(() => {
     const saved = window.localStorage.getItem(LANG_KEY);
@@ -203,7 +204,7 @@ export default function CaseStudyDetail({ caseStudy }: { caseStudy: CaseStudy })
 
   const liveUrl = caseStudy.card.liveUrl;
   const liveDomain = getDomainLabel(liveUrl);
-  const sectionMotion = prefersReducedMotion
+  const sectionMotion = !motionEnabled
     ? {}
     : {
         initial: "hidden",
@@ -216,7 +217,7 @@ export default function CaseStudyDetail({ caseStudy }: { caseStudy: CaseStudy })
         }
       };
 
-  const sectionItemMotion = prefersReducedMotion
+  const sectionItemMotion = !motionEnabled
     ? {}
     : {
         variants: {
@@ -315,7 +316,7 @@ export default function CaseStudyDetail({ caseStudy }: { caseStudy: CaseStudy })
                   className="light-badge transition hover:bg-rose-100/80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-nest-400/60 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
                   href={`#${item.id}`}
                   aria-label={`${copy.jumpToLabel} ${item.title}`}
-                  whileTap={prefersReducedMotion ? undefined : { scale: 0.98 }}
+                  whileTap={motionEnabled ? { scale: 0.98 } : undefined}
                 >
                   {item.title}
                 </motion.a>

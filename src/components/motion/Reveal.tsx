@@ -1,6 +1,7 @@
 "use client";
 
-import { motion, useReducedMotion } from "framer-motion";
+import { motion } from "framer-motion";
+import { useMotionEnabled } from "@/lib/motion";
 
 type RevealProps = {
   children: React.ReactNode;
@@ -17,9 +18,9 @@ export default function Reveal({
   duration = 0.6,
   className
 }: RevealProps) {
-  const shouldReduceMotion = useReducedMotion();
+  const motionEnabled = useMotionEnabled();
 
-  if (shouldReduceMotion) {
+  if (!motionEnabled) {
     return <div className={className}>{children}</div>;
   }
 

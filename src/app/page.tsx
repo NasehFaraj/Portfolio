@@ -20,6 +20,7 @@ import Section from "@/components/Section";
 import { siteContent } from "@/content/siteContent";
 import { formatTagLabel } from "@/lib/formatTagLabel";
 import Reveal from "@/components/motion/Reveal";
+import { MotionItem, MotionSection, MotionStagger } from "@/lib/motion";
 import { withBasePath } from "@/lib/withBasePath";
 
 const LANG_KEY = "portfolio:lang";
@@ -274,7 +275,7 @@ export default function Home() {
 
       <Section id="projects" variant="dark">
         <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6 sm:py-16">
-          <Reveal>
+          <MotionSection>
             <div className="mb-8 flex items-end justify-between sm:mb-10">
               <div>
                 <p className="text-xs uppercase tracking-[0.3em] text-white/50">
@@ -287,11 +288,14 @@ export default function Home() {
                 </h2>
               </div>
             </div>
-          </Reveal>
-          <div className="grid items-stretch gap-4 md:grid-cols-2 md:gap-6">
-            {siteContent.projects.items.map((project, index) => (
-              <Reveal key={project.id} delay={index * 0.06}>
-                <article className="section-card flex h-full flex-col p-4 sm:p-6 transition-transform duration-200 ease-out hover:-translate-y-0.5 hover:shadow-lg">
+          </MotionSection>
+          <MotionStagger className="grid items-stretch gap-4 md:grid-cols-2 md:gap-6">
+            {siteContent.projects.items.map((project) => (
+              <MotionItem
+                key={project.id}
+                as="article"
+                className="section-card flex h-full flex-col p-4 sm:p-6 transition-transform duration-200 ease-out hover:-translate-y-0.5 hover:shadow-lg"
+              >
                   <div className="flex-1">
                   <div className="flex items-start gap-3">
                   <div className="flex h-12 w-12 shrink-0 items-center justify-center overflow-hidden rounded-xl border border-white/10 bg-white/5">
@@ -368,10 +372,9 @@ export default function Home() {
                     {project.caseStudyLabel}
                   </a>
                 </div>
-                </article>
-              </Reveal>
+              </MotionItem>
             ))}
-          </div>
+          </MotionStagger>
         </div>
       </Section>
 
@@ -381,7 +384,7 @@ export default function Home() {
         className="bg-gradient-to-b from-rose-50 via-rose-50/60 to-white"
       >
         <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6 sm:py-16">
-          <Reveal>
+          <MotionSection>
             <div className="mb-8 sm:mb-10">
               <p className="text-xs uppercase tracking-[0.3em] text-nest-600">
               {isArabic
@@ -394,15 +397,16 @@ export default function Home() {
                   : siteContent.labels.caseStudiesTitle.en}
               </h2>
             </div>
-          </Reveal>
-          <div className="space-y-8 sm:space-y-10">
-            {siteContent.caseStudies.map((study, index) => {
+          </MotionSection>
+          <MotionStagger className="space-y-8 sm:space-y-10">
+            {siteContent.caseStudies.map((study) => {
               const cardCopy = isArabic ? study.card.copy.ar : study.card.copy.en;
               return (
-                <Reveal key={study.slug} delay={index * 0.06}>
-                  <article
-                    className="rounded-2xl border border-rose-200 bg-white/70 p-4 shadow-sm backdrop-blur transition-transform duration-200 ease-out hover:-translate-y-0.5 hover:shadow-lg sm:p-6"
-                  >
+                <MotionItem
+                  key={study.slug}
+                  as="article"
+                  className="rounded-2xl border border-rose-200 bg-white/70 p-4 shadow-sm backdrop-blur transition-transform duration-200 ease-out hover:-translate-y-0.5 hover:shadow-lg sm:p-6"
+                >
                     <h3 className="text-xl font-semibold text-slate-900 sm:text-2xl">
                       {cardCopy.title}
                     </h3>
@@ -440,11 +444,10 @@ export default function Home() {
                         {cardCopy.readLabel}
                       </Link>
                     </div>
-                  </article>
-                </Reveal>
+                </MotionItem>
               );
             })}
-          </div>
+          </MotionStagger>
         </div>
       </Section>
 

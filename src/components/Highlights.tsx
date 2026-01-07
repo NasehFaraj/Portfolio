@@ -55,7 +55,9 @@ export default function Highlights({ isArabic }: HighlightsProps) {
   }) => (
     <div className="flex items-start justify-between gap-4" dir="ltr">
       <div className={`min-w-0 flex flex-col gap-3 ${contentAlign}`} dir={isRtl ? "rtl" : "ltr"}>
-        <h3 className="text-base font-semibold leading-tight text-white sm:text-lg">{title}</h3>
+        <h3 className="text-base font-semibold leading-tight text-white text-start sm:text-lg">
+          {title}
+        </h3>
         {badge ? (
           <span
             className={`${badgeClasses} max-w-full whitespace-nowrap truncate ${
