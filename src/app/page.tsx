@@ -141,7 +141,7 @@ export default function Home() {
   return (
     <main
       dir={isArabic ? "rtl" : "ltr"}
-      className={`${isArabic ? "font-arabic" : ""} overflow-x-hidden`}
+      className={`${isArabic ? "font-arabic" : ""} overflow-x-hidden lg:overflow-x-visible`}
     >
       <ScrollNavbar
         isArabic={isArabic}

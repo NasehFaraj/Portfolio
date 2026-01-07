@@ -66,8 +66,8 @@ export default function StackAndCapabilities({ isArabic }: StackAndCapabilitiesP
             </p>
           </div>
         </Reveal>
-        <div className="grid items-start gap-6 lg:grid-cols-[420px,1fr] sm:gap-8">
-          <aside className="self-start lg:sticky lg:top-24">
+        <div className="grid items-start gap-6 lg:grid-cols-[minmax(0,260px),1fr] sm:gap-8">
+          <aside className="self-start w-full lg:sticky lg:top-24 lg:max-w-[260px]">
             <div className="flex flex-col gap-4">
               <Reveal>
                 <div className="rounded-2xl border border-slate-200 bg-white/70 p-4 shadow-sm transition-transform duration-200 ease-out hover:-translate-y-0.5 hover:shadow-lg sm:p-5">
