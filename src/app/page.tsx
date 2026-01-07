@@ -396,60 +396,54 @@ export default function Home() {
             </div>
           </Reveal>
           <div className="space-y-8 sm:space-y-10">
-            {siteContent.caseStudies.map((study, index) => (
-              <Reveal key={study.id} delay={index * 0.06}>
-                <article
-                  className="rounded-2xl border border-rose-200 bg-white/70 p-4 shadow-sm backdrop-blur transition-transform duration-200 ease-out hover:-translate-y-0.5 hover:shadow-lg sm:p-6"
-                >
-                <h3 className="text-xl font-semibold text-slate-900 sm:text-2xl">
-                  {isArabic ? study.title.ar : study.title.en}
-                </h3>
-                {isArabic ? (
-                  <details className="mt-4 text-sm text-slate-700" open={false}>
-                    <summary className="cursor-pointer text-slate-600">
-                      English summary
-                    </summary>
-                    <ul className="mt-3 space-y-2 leading-relaxed">
-                      {study.summaryEn.map((bullet) => (
+            {siteContent.caseStudies.map((study, index) => {
+              const cardCopy = isArabic ? study.card.copy.ar : study.card.copy.en;
+              return (
+                <Reveal key={study.slug} delay={index * 0.06}>
+                  <article
+                    className="rounded-2xl border border-rose-200 bg-white/70 p-4 shadow-sm backdrop-blur transition-transform duration-200 ease-out hover:-translate-y-0.5 hover:shadow-lg sm:p-6"
+                  >
+                    <h3 className="text-xl font-semibold text-slate-900 sm:text-2xl">
+                      {cardCopy.title}
+                    </h3>
+                    <p className="mt-3 text-sm text-slate-700 leading-relaxed">
+                      {cardCopy.summary}
+                    </p>
+                    <ul className="mt-4 space-y-2 text-sm text-slate-700 leading-relaxed">
+                      {cardCopy.bullets.map((bullet) => (
                         <li key={bullet} className="flex items-start gap-2">
                           <span className="mt-2 h-1.5 w-1.5 rounded-full bg-nest-400" />
                           <span>{bullet}</span>
                         </li>
                       ))}
                     </ul>
-                  </details>
-                ) : (
-                  <ul className="mt-4 space-y-2 text-sm text-slate-700 leading-relaxed">
-                    {study.summaryEn.map((bullet) => (
-                      <li key={bullet} className="flex items-start gap-2">
-                        <span className="mt-2 h-1.5 w-1.5 rounded-full bg-nest-400" />
-                        <span>{bullet}</span>
-                      </li>
-                    ))}
-                  </ul>
-                )}
-                <details
-                  className="mt-6 rounded-xl border border-rose-200 bg-rose-50/60 p-3 sm:p-4"
-                  open={isArabic}
-                >
-                  <summary className="cursor-pointer text-sm font-semibold text-nest-600">
-                    {isArabic ? "ملخص عربي" : "Arabic summary"}
-                  </summary>
-                  <ul
-                    className="mt-3 space-y-2 text-sm text-slate-700 font-arabic text-right"
-                    dir="rtl"
-                  >
-                    {study.summaryAr.map((bullet) => (
-                      <li key={bullet} className="flex items-start gap-2">
-                        <span className="mt-2 h-1.5 w-1.5 rounded-full bg-nest-400" />
-                        <span>{bullet}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </details>
-                </article>
-              </Reveal>
-            ))}
+                    <p className="mt-4 text-xs uppercase tracking-[0.2em] text-slate-500">
+                      {cardCopy.stackLine}
+                    </p>
+                    <div className="mt-6 flex flex-wrap gap-3">
+                      {study.card.liveUrl ? (
+                        <a
+                          className="light-badge"
+                          href={study.card.liveUrl}
+                          target="_blank"
+                          rel="noreferrer"
+                          aria-label={`${cardCopy.liveLabel}: ${cardCopy.title}`}
+                        >
+                          {cardCopy.liveLabel}
+                        </a>
+                      ) : null}
+                      <Link
+                        className="primary-button"
+                        href={`/case-studies/${study.slug}`}
+                        aria-label={`${cardCopy.readLabel}: ${cardCopy.title}`}
+                      >
+                        {cardCopy.readLabel}
+                      </Link>
+                    </div>
+                  </article>
+                </Reveal>
+              );
+            })}
           </div>
         </div>
       </Section>

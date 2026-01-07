@@ -42,6 +42,7 @@ export default function Highlights({ isArabic }: HighlightsProps) {
   const isRtl = isArabic;
   const contentAlign = isRtl ? "items-end text-right" : "items-start text-left";
   const selfEdge = isRtl ? "self-end" : "self-start";
+  const mediaHeightClass = "h-[140px] sm:h-[150px]";
 
   const AchievementCardHeader = ({
     title,
@@ -107,7 +108,7 @@ export default function Highlights({ isArabic }: HighlightsProps) {
   }: {
     images: MediaImage[];
   }) => (
-    <div className={`${selfEdge} w-full max-w-[280px] sm:max-w-[320px]`} dir="ltr">
+    <div className={`${selfEdge} flex h-full w-full flex-col`} dir="ltr">
       <p
         className={`text-xs uppercase tracking-widest text-white/50 ${
           isRtl ? "text-right" : "text-left"
@@ -116,14 +117,14 @@ export default function Highlights({ isArabic }: HighlightsProps) {
       >
         {proofLabel}
       </p>
-      <div className="mt-2 grid grid-cols-2 gap-3">
+      <div className="mt-2 grid flex-1 grid-cols-2 gap-3">
         {images.map((image) => {
           const resolvedSrc = resolvedMedia[image.src];
           if (resolvedSrc === undefined) {
             return (
               <div
                 key={image.src}
-                className="aspect-square animate-pulse rounded-xl border border-white/10 bg-white/5"
+                className="h-full w-full animate-pulse rounded-xl border border-white/10 bg-white/5"
               />
             );
           }
@@ -131,7 +132,7 @@ export default function Highlights({ isArabic }: HighlightsProps) {
             return (
               <div
                 key={image.src}
-                className="flex aspect-square items-center justify-center rounded-xl border border-white/10 bg-black/20 text-white/50"
+                className="flex h-full w-full items-center justify-center rounded-xl border border-white/10 bg-black/20 text-white/50"
               >
                 <ImageIcon className="h-5 w-5" />
               </div>
@@ -142,7 +143,7 @@ export default function Highlights({ isArabic }: HighlightsProps) {
               key={image.src}
               type="button"
               onClick={() => handleOpen(image, resolvedSrc)}
-              className="group relative aspect-square overflow-hidden rounded-xl border border-white/10 bg-black/20 transition-transform hover:scale-[1.02]"
+              className="group relative h-full w-full overflow-hidden rounded-xl border border-white/10 bg-black/20 transition-transform hover:scale-[1.02]"
             >
               <Image
                 src={resolvedSrc}
@@ -248,12 +249,9 @@ export default function Highlights({ isArabic }: HighlightsProps) {
                       Icon={Icon}
                     />
                     <AchievementCardBody bullets={bullets} />
-                  </div>
-                  <div className="mt-auto">
-                    {hasMedia ? <AchievementCardMedia images={images} /> : null}
                     {block.links?.length ? (
                       <div
-                        className={`mt-4 flex flex-wrap gap-2 ${
+                        className={`flex flex-wrap gap-2 ${
                           isArabic ? "justify-end" : "justify-start"
                         }`}
                         dir={isArabic ? "rtl" : "ltr"}
@@ -271,6 +269,13 @@ export default function Highlights({ isArabic }: HighlightsProps) {
                         ))}
                       </div>
                     ) : null}
+                  </div>
+                  <div className={`mt-4 ${mediaHeightClass} w-full`}>
+                    {hasMedia ? (
+                      <AchievementCardMedia images={images} />
+                    ) : (
+                      <div className="h-full w-full" aria-hidden />
+                    )}
                   </div>
                 </div>
               </Reveal>

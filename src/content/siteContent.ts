@@ -1,3 +1,5 @@
+import { caseStudies } from "@/data/caseStudies";
+
 export const siteContent = {
   profile: {
     name: "Naseh Faraj",
@@ -381,36 +383,7 @@ export const siteContent = {
       }
     ]
   },
-  caseStudies: [
-    {
-      id: "REMOVED",
-      title: { en: "REMOVED REMOVED REMOVED", ar: "REMOVED حرية REMOVED" },
-      summaryEn: [
-        "Built a secure moderation-based backend where public submissions are reviewed and approved before publishing.",
-        "Modeled massacres ↔ REMOVED ↔ comments with an auditable change-request history in MongoDB.",
-        "Hardened production deployment on a Linux VPS using Docker + Nginx + HTTPS and defensive protections."
-      ],
-      summaryAr: [
-        "بنيت نظام مراجعة صارم: إرسال → مراجعة → قبول/رفض → تحديث تلقائي للمحتوى العام.",
-        "نمذجة بيانات تربط المجازر بالREMOVED مع تعليقات وسجل طلبات قابل للتتبع (MongoDB).",
-        "نشر وتشغيل عبر Docker وNginx على VPS مع HTTPS وتقوية أمنية دفاعية."
-      ]
-    },
-    {
-      id: "trendy",
-      title: { en: "trendy", ar: "ترندي" },
-      summaryEn: [
-        "Designed a multi-role NestJS backend (customer/merchant/driver/admin) with RBAC and clean modular services.",
-        "Implemented a controlled order state machine with audit-friendly status history and delivery confirmation.",
-        "Prepared deployment-ready infrastructure using Docker + Nginx on a VPS for predictable releases."
-      ],
-      summaryAr: [
-        "باك-إند NestJS متعدد الأدوار مع RBAC (عميل/تاجر/سائق/إدارة) وبنية Modules منظمة.",
-        "إدارة دورة الطلب بحالات واضحة مع سجل تغييرات وتتبع وتسليم مع تأكيد (OTP).",
-        "جاهزية للنشر عبر Docker وNginx على VPS بإعدادات آمنة."
-      ]
-    }
-  ],
+  caseStudies,
   teaching: {
     enTitle: "Teaching & Competitive Programming",
     arTitle: "التعليم والبرمجة التنافسية",
