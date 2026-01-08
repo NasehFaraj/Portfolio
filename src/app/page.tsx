@@ -368,9 +368,11 @@ export default function Home() {
                       {project.liveLabel}
                     </a>
                   ) : null}
-                  <a className="glass-button" href="#case-studies">
-                    {project.caseStudyLabel}
-                  </a>
+                  {project.caseStudyHref ? (
+                    <Link className="glass-button" href={project.caseStudyHref}>
+                      {project.caseStudyLabel}
+                    </Link>
+                  ) : null}
                 </div>
               </MotionItem>
             ))}
@@ -379,7 +381,7 @@ export default function Home() {
       </Section>
 
       <Section
-        id="case-studies"
+        id="other-projects"
         variant="pink"
         className="bg-gradient-to-b from-rose-50 via-rose-50/60 to-white"
       >
@@ -387,9 +389,9 @@ export default function Home() {
           <MotionSection>
             <div className="mb-8 sm:mb-10">
               <p className="text-xs uppercase tracking-[0.3em] text-nest-600">
-              {isArabic
-                ? siteContent.labels.deepDives.ar
-                : siteContent.labels.deepDives.en}
+                {isArabic
+                  ? siteContent.labels.deepDives.ar
+                  : siteContent.labels.deepDives.en}
               </p>
               <h2 className="text-2xl font-semibold text-slate-900 sm:text-3xl">
                 {isArabic
@@ -399,50 +401,67 @@ export default function Home() {
             </div>
           </MotionSection>
           <MotionStagger className="space-y-8 sm:space-y-10">
-            {siteContent.caseStudies.map((study) => {
-              const cardCopy = isArabic ? study.card.copy.ar : study.card.copy.en;
+            {siteContent.otherProjects.map((project) => {
+              const title = isArabic ? project.title.ar : project.title.en;
+              const summary = isArabic ? project.summary.ar : project.summary.en;
+              const bullets = isArabic ? project.bullets.ar : project.bullets.en;
+              const stackLabel = isArabic ? "التقنيات" : "Stack";
+              const stackLine = project.stack.join(" • ");
+              const demoLabel = isArabic ? "عرض تجريبي" : "Live demo";
+              const privateLabel = isArabic ? "مستودع خاص" : "Private repo";
+              const aiBulletText = isArabic
+                ? "توليد اختبارات اختيار من متعدد تفاعلية عبر Gemini Pro 2.5 API مع تصحيح/علامة تلقائية."
+                : "AI-generated interactive multiple-choice quizzes via Gemini Pro 2.5 API (auto scoring).";
               return (
                 <MotionItem
-                  key={study.slug}
+                  key={project.id}
                   as="article"
                   className="rounded-2xl border border-rose-200 bg-white/70 p-4 shadow-sm backdrop-blur transition-transform duration-200 ease-out hover:-translate-y-0.5 hover:shadow-lg sm:p-6"
                 >
                     <h3 className="text-xl font-semibold text-slate-900 sm:text-2xl">
-                      {cardCopy.title}
+                      {title}
                     </h3>
                     <p className="mt-3 text-sm text-slate-700 leading-relaxed">
-                      {cardCopy.summary}
+                      {summary}
                     </p>
                     <ul className="mt-4 space-y-2 text-sm text-slate-700 leading-relaxed">
-                      {cardCopy.bullets.map((bullet) => (
+                      {bullets.map((bullet) => {
+                        const isAiBullet =
+                          project.id === "online-education-system" &&
+                          bullet === aiBulletText;
+                        return (
                         <li key={bullet} className="flex items-start gap-2">
                           <span className="mt-2 h-1.5 w-1.5 rounded-full bg-nest-400" />
-                          <span>{bullet}</span>
+                          <span className="inline-flex flex-wrap items-center gap-2">
+                            <span>{bullet}</span>
+                            {isAiBullet ? (
+                              <span className="inline-flex items-center rounded-full border border-nest-400/50 bg-rose-50 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-[0.2em] text-nest-600">
+                                AI
+                              </span>
+                            ) : null}
+                          </span>
                         </li>
-                      ))}
+                        );
+                      })}
                     </ul>
                     <p className="mt-4 text-xs uppercase tracking-[0.2em] text-slate-500">
-                      {cardCopy.stackLine}
+                      {stackLabel}: {stackLine}
                     </p>
                     <div className="mt-6 flex flex-wrap gap-3">
-                      {study.card.liveUrl ? (
+                      {project.links.demoUrl ? (
                         <a
-                          className="light-badge"
-                          href={study.card.liveUrl}
+                          className="inline-flex items-center gap-2 rounded-full bg-nest-600 px-4 py-2 text-sm font-semibold text-white shadow-sm transition hover:-translate-y-0.5 hover:brightness-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-nest-400/60 focus-visible:ring-offset-2 focus-visible:ring-offset-white cursor-pointer"
+                          href={project.links.demoUrl}
                           target="_blank"
                           rel="noreferrer"
-                          aria-label={`${cardCopy.liveLabel}: ${cardCopy.title}`}
+                          aria-label={`${demoLabel}: ${title}`}
                         >
-                          {cardCopy.liveLabel}
+                          {demoLabel}
                         </a>
                       ) : null}
-                      <Link
-                        className="primary-button"
-                        href={`/case-studies/${study.slug}`}
-                        aria-label={`${cardCopy.readLabel}: ${cardCopy.title}`}
-                      >
-                        {cardCopy.readLabel}
-                      </Link>
+                      {project.repoPrivate ? (
+                        <span className="light-badge">{privateLabel}</span>
+                      ) : null}
                     </div>
                 </MotionItem>
               );

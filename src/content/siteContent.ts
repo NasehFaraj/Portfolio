@@ -1,4 +1,4 @@
-import { caseStudies } from "@/data/caseStudies";
+import { otherProjects } from "@/data/otherProjects";
 
 export const siteContent = {
   profile: {
@@ -16,8 +16,8 @@ export const siteContent = {
       ar: "هندسة الخلفية والبنية التحتية"
     },
     selectWork: { en: "Select work", ar: "أعمال مختارة" },
-    deepDives: { en: "Deep dives", ar: "تفاصيل موسعة" },
-    caseStudiesTitle: { en: "Case Studies", ar: "دراسات الحالة" },
+    deepDives: { en: "Other work", ar: "أعمال أخرى" },
+    caseStudiesTitle: { en: "Other Projects", ar: "مشاريع أخرى" },
     craft: { en: "Craft", ar: "المهارة" },
     toolkit: { en: "Toolkit", ar: "الأدوات" },
     letsTalk: { en: "Let's talk", ar: "لنتحدث" }
@@ -34,14 +34,14 @@ export const siteContent = {
       { label: "Home", href: "#hero" },
       { label: "Stack & Capabilities", href: "#stack" },
       { label: "Projects", href: "#projects" },
-      { label: "Case Studies", href: "#case-studies" },
+      { label: "Other Projects", href: "#other-projects" },
       { label: "Other Highlights", href: "#highlights" }
     ],
     ar: [
       { label: "الرئيسية", href: "#hero" },
       { label: "التقنيات", href: "#stack" },
       { label: "المشاريع", href: "#projects" },
-      { label: "دراسات الحالة", href: "#case-studies" },
+      { label: "مشاريع أخرى", href: "#other-projects" },
       { label: "إنجازات إضافية", href: "#highlights" }
     ]
   },
@@ -352,6 +352,7 @@ export const siteContent = {
         ],
         stack: ["Node.js API", "MongoDB", "Docker", "Nginx", "VPS/HTTPS"],
         liveUrl: "https://REMOVED-of-REMOVED-REMOVED.com/",
+        caseStudyHref: "/case-studies/REMOVED-REMOVED-REMOVED",
         caseStudyLabel: "Read case study",
         liveLabel: "Live site",
         privateCode: true
@@ -377,13 +378,14 @@ export const siteContent = {
         ],
         stack: ["NestJS", "PostgreSQL", "Docker", "Nginx", "VPS"],
         liveUrl: "",
+        caseStudyHref: "/case-studies/trendy",
         caseStudyLabel: "Read case study",
         liveLabel: "Live site",
         privateCode: true
       }
     ]
   },
-  caseStudies,
+  otherProjects,
   teaching: {
     enTitle: "Teaching & Competitive Programming",
     arTitle: "التعليم والبرمجة التنافسية",

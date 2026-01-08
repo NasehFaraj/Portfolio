@@ -245,7 +245,7 @@ export default function CaseStudyDetail({ caseStudy }: { caseStudy: CaseStudy })
         >
           <Link
             className="primary-button min-w-0 transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-nest-400/60 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
-            href="/#case-studies"
+            href="/#other-projects"
             aria-label={copy.backLabel}
           >
             <span className="truncate">{copy.backLabel}</span>
