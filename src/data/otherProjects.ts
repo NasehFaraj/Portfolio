@@ -65,9 +65,7 @@ export const otherProjects: OtherProject[] = [
       "Swagger (swagger-jsdoc + swagger-ui-express)",
       "Axios"
     ],
-    links: {
-      demoUrl: "https://online-education-system-7cqh.onrender.com"
-    },
+    links: {},
     repoPrivate: true,
     deployed: true
   },
