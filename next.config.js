@@ -1,10 +1,14 @@
 /** @type {import('next').NextConfig} */
 const rawBasePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
-const trimmedBasePath = rawBasePath.replace(/(^\/+|\/+$)/g, "");
-const basePath = trimmedBasePath ? `/${trimmedBasePath}` : "";
-const assetPrefix = basePath ? `${basePath}/` : undefined;
+const withLeadingSlash = rawBasePath
+  ? rawBasePath.startsWith("/") ? rawBasePath : `/${rawBasePath}`
+  : "";
+const basePath =
+  withLeadingSlash.length > 1 && withLeadingSlash.endsWith("/")
+    ? withLeadingSlash.slice(0, -1)
+    : withLeadingSlash;
 
-const nextConfig = {
+module.exports = {
   output: "export",
   trailingSlash: true,
   images: {
@@ -14,7 +18,5 @@ const nextConfig = {
     NEXT_PUBLIC_BASE_PATH: basePath
   },
   basePath,
-  assetPrefix
+  assetPrefix: basePath ? `${basePath}/` : undefined
 };
-
-module.exports = nextConfig;
