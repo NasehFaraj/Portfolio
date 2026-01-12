@@ -20,6 +20,11 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Configure Pages
+        uses: actions/configure-pages@v5
+        with:
+          static_site_generator: next
+
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
@@ -30,8 +35,6 @@ jobs:
         run: npm ci
 
       - name: Build
-        env:
-          NEXT_PUBLIC_BASE_PATH: "/portfolio"
         run: npm run build
 
       - name: Upload artifact

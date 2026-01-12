@@ -24,6 +24,11 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      - name: Configure Pages
+        uses: actions/configure-pages@v5
+        with:
+          static_site_generator: next
+
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
@@ -34,8 +39,6 @@ jobs:
         run: npm ci
 
       - name: Build Next.js (static export)
-        env:
-          NEXT_PUBLIC_BASE_PATH: /portfolio
         run: npm run build
 
       - name: Upload GitHub Pages artifact

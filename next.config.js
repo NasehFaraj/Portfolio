@@ -1,5 +1,8 @@
 /** @type {import('next').NextConfig} */
-const isProduction = process.env.NODE_ENV === "production";
+const rawBasePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
+const trimmedBasePath = rawBasePath.replace(/(^\/+|\/+$)/g, "");
+const basePath = trimmedBasePath ? `/${trimmedBasePath}` : "";
+const assetPrefix = basePath ? `${basePath}/` : undefined;
 
 const nextConfig = {
   output: "export",
@@ -8,10 +11,10 @@ const nextConfig = {
     unoptimized: true
   },
   env: {
-    NEXT_PUBLIC_BASE_PATH: isProduction ? "/Portfolio" : ""
+    NEXT_PUBLIC_BASE_PATH: basePath
   },
-  basePath: isProduction ? "/Portfolio" : "",
-  assetPrefix: isProduction ? "/Portfolio/" : undefined
+  basePath,
+  assetPrefix
 };
 
 module.exports = nextConfig;
