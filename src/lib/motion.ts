@@ -16,11 +16,6 @@ export const fadeUp = {
   show: { opacity: 1, y: 0, transition: transitions.normal }
 };
 
-export const fadeIn = {
-  hidden: { opacity: 0 },
-  show: { opacity: 1, transition: transitions.normal }
-};
-
 export const staggerContainer = {
   hidden: {},
   show: { transition: { staggerChildren: 0.07 } }

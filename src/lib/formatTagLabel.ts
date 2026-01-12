@@ -63,5 +63,3 @@ export const formatTagLabel = (label: string, isArabic: boolean) => {
 
   return { text: label, isTechnical: false };
 };
-
-export { nonTranslatableTerms };

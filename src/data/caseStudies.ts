@@ -1,5 +1,3 @@
-import packageJson from "../../package.json";
-
 export type CaseStudyChallenge = {
   challenge: string;
   fix: string;
@@ -66,56 +64,16 @@ export type CaseStudyI18n = {
   supportingServices?: string[];
 };
 
-export type CaseStudyCardCopy = {
-  title: string;
-  summary: string;
-  bullets: string[];
-  stackLine: string;
-  readLabel: string;
-  liveLabel: string;
-};
-
 export type CaseStudy = {
   slug: string;
   title: string;
   card: {
-    copy: {
-      en: CaseStudyCardCopy;
-      ar: CaseStudyCardCopy;
-    };
     liveUrl?: string;
   };
   i18n: {
     en: CaseStudyI18n;
     ar: CaseStudyI18n;
   };
-};
-
-const stackLabels = [
-  { key: "next", label: "Next.js" },
-  { key: "react", label: "React" },
-  { key: "react-dom", label: "React DOM" },
-  { key: "typescript", label: "TypeScript" },
-  { key: "tailwindcss", label: "Tailwind CSS" },
-  { key: "framer-motion", label: "Framer Motion" }
-];
-
-const getStackItems = () => {
-  const deps = (packageJson.dependencies ?? {}) as Record<string, string>;
-  const devDeps = (packageJson.devDependencies ?? {}) as Record<string, string>;
-  return stackLabels
-    .filter((item) => Boolean(deps[item.key] || devDeps[item.key]))
-    .map((item) => item.label);
-};
-
-const buildStackLine = (label = "Stack") => {
-  const items = getStackItems();
-  return items.length ? `${label}: ${items.join(" • ")}` : `${label}: Unspecified`;
-};
-
-const verifiedStackItems = () => {
-  const items = getStackItems();
-  return items.length ? items : ["Unverified stack items pending."];
 };
 
 const REMOVEDSummary =
@@ -138,59 +96,6 @@ const trendyStackLine =
 
 const trendyStackLineAr =
   "التقنيات: NestJS • PostgreSQL • TypeORM • JWT • Cloudinary • Firebase • Docker";
-
-const REMOVEDCardCopy = {
-  en: {
-    title: "REMOVED REMOVED REMOVED",
-    summary: REMOVEDSummary,
-    bullets: REMOVEDBullets,
-    stackLine: REMOVEDStackLine,
-    readLabel: "Read case study",
-    liveLabel: "Live product"
-  },
-  ar: {
-    title: "REMOVED حرية REMOVED",
-    summary:
-      "باك-إند production مبني بـ Express + MongoDB لمنصة توثيق/أرشفة، مع مصادقة آمنة ورفع وسائط.",
-    bullets: [
-      "باك-إند Express (TypeScript) مع مصادقة jsonwebtoken، تشفير كلمات المرور عبر bcrypt، وطبقة حماية middleware.",
-      "نمذجة MongoDB باستخدام mongoose مع أنماط أمان للتعديل ومعرّفات متوقعة عبر mongoose-sequence.",
-      "رفع الوسائط عبر multer مع معالجة الصور عبر sharp."
-    ],
-    stackLine: REMOVEDStackLineAr,
-    readLabel: "اقرأ دراسة الحالة",
-    liveLabel: "عرض المنتج"
-  }
-};
-
-const trendyCardCopy = {
-  en: {
-    title: "trendy",
-    summary:
-      "NestJS + PostgreSQL API for a multi-role logistics/marketplace platform connecting customers, stores, and drivers.",
-    bullets: [
-      "JWT auth with Refresh Token via HTTP-only cookie, Google OAuth, and RBAC for admin/seller/driver/customer.",
-      "Order lifecycle from cart to delivery with pickup/delivery tasks and driver assignment by zone/speed/availability.",
-      "Catalog + media management with Cloudinary signed uploads and Firebase push notifications."
-    ],
-    stackLine: trendyStackLine,
-    readLabel: "Read case study",
-    liveLabel: "Live product"
-  },
-  ar: {
-    title: "ترندي",
-    summary:
-      "واجهة API مبنية بـ NestJS وPostgreSQL لمنصة لوجستية/ماركت-بليس متعددة الأدوار تربط العملاء بالمتاجر والسائقين.",
-    bullets: [
-      "مصادقة JWT مع Refresh Token عبر HTTP-only cookie وGoogle OAuth، وRBAC لأدوار admin/seller/driver/customer.",
-      "دورة طلب كاملة من السلة حتى التسليم مع مهام PICKUP/DELIVERY وتعيين السائقين حسب المنطقة والسرعة والتوفر.",
-      "إدارة كتالوج وميديا عبر Cloudinary signed uploads وإشعارات Push عبر Firebase."
-    ],
-    stackLine: trendyStackLineAr,
-    readLabel: "اقرأ دراسة الحالة",
-    liveLabel: "عرض المنتج"
-  }
-};
 
 const REMOVEDOverview = [
   "This project is a production backend for a documentation/archive platform.",
@@ -254,8 +159,7 @@ export const caseStudies: CaseStudy[] = [
     slug: "REMOVED-REMOVED-REMOVED",
     title: "REMOVED REMOVED REMOVED",
     card: {
-      copy: REMOVEDCardCopy,
-      liveUrl: "https://REMOVED-of-REMOVED-REMOVED.com/",
+      liveUrl: "https://REMOVED-of-REMOVED-REMOVED.com/"
     },
     i18n: {
       en: {
@@ -390,9 +294,7 @@ export const caseStudies: CaseStudy[] = [
   {
     slug: "trendy",
     title: "trendy",
-    card: {
-      copy: trendyCardCopy
-    },
+    card: {},
     i18n: {
       en: {
         title: "trendy",
@@ -488,8 +390,7 @@ export const caseStudies: CaseStudy[] = [
         ordersLogistics: [
           "Order creation from cart with customer profile validation; delivery speed is inferred from product categories.",
           "Slow orders require time windows; fast orders have no window.",
-          "Seller-level item confirmation/rejection with a 15-minute window and auto-reject on timeout.",
-          "Order statuses include: PENDING/CONFIRMED/READY_FOR_DELIVERY/PROCESSING/SHIPPED/DELIVERED/RETURN_REQUESTED/CANCELLED..."
+          "Seller-level item confirmation/rejection with a 15-minute window and auto-reject on timeout."
         ],
         driverTasks: [
           "Orders split into PICKUP/DELIVERY tasks.",
@@ -599,8 +500,7 @@ export const caseStudies: CaseStudy[] = [
         },
         ordersLogistics: [
           "إنشاء الطلب من السلة مع تحقق من ملف العميل، سرعة التوصيل تُستنتج من تصنيفات المنتجات؛ الطلب البطيء يتطلب نوافذ زمنية، والسريع بدون نافذة.",
-          "البنود تُدار على مستوى البائع (تأكيد/رفض) مع مهلة 15 دقيقة ورفض تلقائي للمعلّق.",
-          "حالات الطلب تشمل: PENDING/CONFIRMED/READY_FOR_DELIVERY/PROCESSING/SHIPPED/DELIVERED/RETURN_REQUESTED/CANCELLED…"
+          "البنود تُدار على مستوى البائع (تأكيد/رفض) مع مهلة 15 دقيقة ورفض تلقائي للمعلّق."
         ],
         driverTasks: [
           "تقسيم الطلب إلى مهام PICKUP/DELIVERY، وتعيين أقل سائق مشغول حسب المنطقة والسرعة والتوفر مع منع تداخل نوافذ زمنية لنفس السائق.",

@@ -5,9 +5,7 @@ export const siteContent = {
     name: "Naseh Faraj",
     nameAr: "ناصح فرج",
     title: "Software Engineer (Backend-focused) • NestJS",
-    titleAr: "مهندس برمجيات (يركز على الخلفية) • NestJS",
-    secondary: "University Instructor & Competitive Programming Coach",
-    secondaryAr: "محاضر جامعي ومدرب برمجة تنافسية"
+    titleAr: "مهندس برمجيات (يركز على الخلفية) • NestJS"
   },
   labels: {
     focusAreas: { en: "Focus Areas", ar: "مجالات التركيز" },
@@ -17,17 +15,7 @@ export const siteContent = {
     },
     selectWork: { en: "Select work", ar: "أعمال مختارة" },
     deepDives: { en: "Other work", ar: "أعمال أخرى" },
-    caseStudiesTitle: { en: "Other Projects", ar: "مشاريع أخرى" },
-    craft: { en: "Craft", ar: "المهارة" },
-    toolkit: { en: "Toolkit", ar: "الأدوات" },
-    letsTalk: { en: "Let's talk", ar: "لنتحدث" }
-  },
-  links: {
-    email: "nasehfara@gmail.com",
-    github: "https://github.com/NasehFaraj",
-    linkedin: "https://www.linkedin.com/in/naseh-faraj-432b7b233/",
-    codeforces: "https://codeforces.com/profile/Savitar-",
-    icpcProof: "https://www.facebook.com/share/1BkEUbPYND/"
+    caseStudiesTitle: { en: "Other Projects", ar: "مشاريع أخرى" }
   },
   nav: {
     en: [
@@ -47,23 +35,19 @@ export const siteContent = {
   },
   hero: {
     en: {
-      headline: "Software Engineer (Backend-focused)",
       subheadline: "Secure APIs • Scalable backends • Clean architecture",
       academicLine:
         "B.Sc. in Information Technology (Informatics Engineering) — academic foundation in CS and systems.",
       supportLine:
         "Infrastructure experience from real projects: Docker, VPS deployments, Nginx, HTTPS, and server hardening.",
-      heroHeaderLine: "NestJS • Node.js • Secure APIs",
       ctaPrimary: "View Projects"
     },
     ar: {
-      headline: "مهندس برمجيات (يركز على الخلفية)",
       subheadline: "واجهات آمنة • باك-إند قابل للتوسع • معمارية نظيفة",
       academicLine:
         "بكالوريوس هندسة/تقنية المعلومات (IT) — خلفية أكاديمية في علوم الحاسوب والأنظمة.",
       supportLine:
         "خبرة بنية تحتية من مشاريع حقيقية: Docker، نشر على VPS، Nginx، HTTPS، وتقوية الخوادم.",
-      heroHeaderLine: "NestJS • Node.js • واجهات آمنة",
       ctaPrimary: "شاهد المشاريع"
     }
   },
@@ -211,12 +195,12 @@ export const siteContent = {
         title: { en: "University Teaching", ar: "التدريس الجامعي" },
         bullets: {
           en: [
-            "Taught programming fundamentals in C++ alongside backend fundamentals (Node.js, Express, MVC, APIs).",
-            "Prepared lab material, quizzes, grading rubrics, and student code reviews."
+            "Taught programming fundamentals (C++) and backend foundations (Node.js, Express, MVC, REST APIs) as a practical instructor at the Faculty of Informatics Engineering, Arab Private University for Science and Technology (APUST) — Hama, Syria.",
+            "Prepared lab sessions and practical exercises, quizzes, grading rubrics, and provided code reviews to help students improve."
           ],
           ar: [
-            "تدريس أساسيات البرمجة بلغة C++ إلى جانب أساسيات الخلفية (Node.js، Express، MVC، APIs).",
-            "إعداد مواد مخبرية وكويزات وسلالم تصحيح ومراجعة شيفرات الطلاب."
+            "درّست أساسيات البرمجة (C++) وأساسيات تطوير الباك-إند (Node.js، Express، MVC، REST APIs) كمدرّس عملي في كلية الهندسة المعلوماتية في الجامعة العربية الخاصة للعلوم والتكنولوجيا (APUST) — حماة، REMOVED.",
+            "أعددت جلسات مخبرية وتمارين تطبيقية، واختبارات قصيرة، ومعايير تصحيح (Rubrics)، وقدّمت مراجعات للكود لمساعدة الطلاب على تحسين مستواهم."
           ]
         }
       },

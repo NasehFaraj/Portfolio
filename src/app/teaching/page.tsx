@@ -1,5 +1,6 @@
 "use client";
 
+// TODO: verify usage
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { siteContent } from "@/content/siteContent";

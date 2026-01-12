@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import Section from "@/components/Section";
 import type { CaseStudy } from "@/data/caseStudies";
@@ -11,15 +11,26 @@ const LANG_KEY = "portfolio:lang";
 
 type Language = "en" | "ar";
 
+const coreStatuses = [
+  "PENDING",
+  "CONFIRMED",
+  "READY_FOR_DELIVERY",
+  "PROCESSING",
+  "SHIPPED",
+  "DELIVERED"
+] as const;
+
+const exceptionStatuses = ["RETURN_REQUESTED", "CANCELLED"] as const;
+
 const renderBullets = (
   items: string[],
   className = "mt-4 space-y-2 text-sm text-slate-700 leading-relaxed"
 ) => (
-  <ul className={className}>
+  <ul className={`${className} break-words [overflow-wrap:anywhere]`}>
     {items.map((bullet) => (
       <li key={bullet} className="flex items-start gap-2">
         <span className="mt-2 h-1.5 w-1.5 rounded-full bg-nest-400" />
-        <span>{bullet}</span>
+        <span className="min-w-0 break-words [overflow-wrap:anywhere]">{bullet}</span>
       </li>
     ))}
   </ul>
@@ -27,7 +38,10 @@ const renderBullets = (
 
 const renderContent = (items: string[]) =>
   items.map((paragraph) => (
-    <p key={paragraph} className="mt-4 text-sm text-slate-700 leading-relaxed">
+    <p
+      key={paragraph}
+      className="mt-4 text-sm text-slate-700 leading-relaxed break-words [overflow-wrap:anywhere]"
+    >
       {paragraph}
     </p>
   ));
@@ -45,13 +59,13 @@ const renderChallenges = (
         <p className="text-xs uppercase tracking-[0.3em] text-slate-500">
           {labels.challenge} {index + 1}
         </p>
-        <p className="mt-2">
+        <p className="mt-2 break-words [overflow-wrap:anywhere]">
           <span className="text-slate-500">{labels.challenge}:</span> {item.challenge}
         </p>
-        <p className="mt-1">
+        <p className="mt-1 break-words [overflow-wrap:anywhere]">
           <span className="text-slate-500">{labels.fix}:</span> {item.fix}
         </p>
-        <p className="mt-1">
+        <p className="mt-1 break-words [overflow-wrap:anywhere]">
           <span className="text-slate-500">{labels.outcome}:</span> {item.outcome}
         </p>
       </div>
@@ -110,6 +124,75 @@ const renderApiHighlights = (
   );
 };
 
+type StatusTimelineProps = {
+  core: readonly string[];
+  exceptions: readonly string[];
+  isArabic: boolean;
+};
+
+const StatusTimeline = ({ core, exceptions, isArabic }: StatusTimelineProps) => {
+  const orderStatusesLabel = isArabic ? "حالات الطلب" : "Order statuses";
+  const exceptionsLabel = isArabic ? "حالات استثنائية" : "Exceptions";
+  const labelAlignment = isArabic ? "text-right" : "text-left";
+  const exceptionsAlignment = isArabic ? "justify-end" : "justify-start";
+  const coreAlignment = isArabic ? "justify-end" : "justify-start";
+
+  return (
+    <div className="mt-3 space-y-4">
+      <p
+        className={`text-xs uppercase tracking-[0.3em] text-slate-500 ${labelAlignment}`}
+        dir={isArabic ? "rtl" : "ltr"}
+      >
+        {orderStatusesLabel}
+      </p>
+      <div
+        className={`flex flex-wrap items-center gap-2 ${coreAlignment}`}
+        dir="ltr"
+      >
+        {core.map((status, index) => (
+          <Fragment key={status}>
+            <span className="max-w-full rounded-full border border-rose-200/60 bg-white/60 px-3 py-1 text-[11px] font-medium text-slate-700 break-words [overflow-wrap:anywhere]">
+              {status}
+            </span>
+            {index < core.length - 1 ? (
+              <span className="mx-1 text-[12px] text-rose-300/80 select-none">›</span>
+            ) : null}
+          </Fragment>
+        ))}
+      </div>
+      <div className="space-y-2">
+        <p
+          className={`text-xs uppercase tracking-[0.3em] text-slate-500 ${labelAlignment}`}
+          dir={isArabic ? "rtl" : "ltr"}
+        >
+          {exceptionsLabel}
+        </p>
+        <div className={`flex flex-wrap gap-2 ${exceptionsAlignment}`} dir="ltr">
+          {exceptions.map((status) => (
+            <span
+              key={status}
+              className="max-w-full rounded-full border border-slate-200 bg-slate-50 px-3 py-1 text-[11px] font-medium text-slate-700 break-words [overflow-wrap:anywhere]"
+            >
+              {status}
+            </span>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+const renderOrdersLogistics = (items: string[], isArabic: boolean) => (
+  <>
+    {renderBullets(items)}
+    <StatusTimeline
+      core={coreStatuses}
+      exceptions={exceptionStatuses}
+      isArabic={isArabic}
+    />
+  </>
+);
+
 export default function CaseStudyDetail({ caseStudy }: { caseStudy: CaseStudy }) {
   const [language, setLanguage] = useState<Language>("en");
   const motionEnabled = useMotionEnabled();
@@ -156,7 +239,7 @@ export default function CaseStudyDetail({ caseStudy }: { caseStudy: CaseStudy })
       id: "orders-logistics",
       title: copy.toc.ordersLogistics,
       show: Boolean(copy.toc.ordersLogistics) && hasItems(copy.ordersLogistics),
-      content: renderBullets(copy.ordersLogistics ?? [])
+      content: renderOrdersLogistics(copy.ordersLogistics ?? [], isArabic)
     },
     {
       id: "implementation",
@@ -234,7 +317,7 @@ export default function CaseStudyDetail({ caseStudy }: { caseStudy: CaseStudy })
     <main
       dir={isArabic ? "rtl" : "ltr"}
       lang={isArabic ? "ar" : "en"}
-      className={isArabic ? "font-arabic text-right" : "text-left"}
+      className={`${isArabic ? "font-arabic text-right" : "text-left"} overflow-x-hidden`}
     >
       <header
         className="sticky top-0 z-50 border-b border-rose-200/70 bg-white/80 backdrop-blur"
@@ -275,32 +358,33 @@ export default function CaseStudyDetail({ caseStudy }: { caseStudy: CaseStudy })
             <h1 className="mt-3 text-3xl font-semibold text-slate-900 sm:text-4xl">
               {copy.title}
             </h1>
-            <p className="mt-3 text-sm text-slate-700 leading-relaxed">
+            <p className="mt-3 text-sm text-slate-700 leading-relaxed break-words [overflow-wrap:anywhere]">
               {copy.heroSummary}
             </p>
             <div className="mt-4 flex flex-wrap gap-2 text-xs uppercase tracking-[0.2em]">
-              <span className="light-badge">
+              <span className="light-badge max-w-full min-w-0 break-words [overflow-wrap:anywhere]">
                 {copy.chips.roleLabel}: {copy.chips.roleValue}
               </span>
-              <span className="light-badge">
+              <span className="light-badge max-w-full min-w-0 break-words [overflow-wrap:anywhere]">
                 {copy.chips.statusLabel}: {copy.chips.statusValue}
               </span>
-              <span className="light-badge">
+              <span className="light-badge max-w-full min-w-0 break-words [overflow-wrap:anywhere]">
                 {copy.chips.repoLabel}: {copy.chips.repoValue}
               </span>
               {liveUrl ? (
                 <a
-                  className="inline-flex items-center rounded-full border border-nest-400/60 bg-rose-50/80 px-3 py-1 text-xs font-semibold text-nest-600 transition hover:bg-rose-100/80 hover:underline underline-offset-4"
+                  className="inline-flex max-w-full min-w-0 items-center rounded-full border border-nest-400/60 bg-rose-50/80 px-3 py-1 text-xs font-semibold text-nest-600 transition break-words [overflow-wrap:anywhere] hover:bg-rose-100/80 hover:underline underline-offset-4"
                   href={liveUrl}
                   target="_blank"
                   rel="noreferrer"
+                  title={liveUrl}
                 >
                   {copy.chips.liveLabel}: {liveDomain}
                 </a>
               ) : null}
             </div>
             {renderBullets(copy.heroBullets)}
-            <p className="mt-4 text-xs uppercase tracking-[0.2em] text-slate-500">
+            <p className="mt-4 text-xs uppercase tracking-[0.2em] text-slate-500 break-words [overflow-wrap:anywhere]">
               {copy.heroStackLine}
             </p>
           </div>
@@ -313,7 +397,7 @@ export default function CaseStudyDetail({ caseStudy }: { caseStudy: CaseStudy })
               {sections.map((item) => (
                 <motion.a
                   key={item.id}
-                  className="light-badge transition hover:bg-rose-100/80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-nest-400/60 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
+                  className="light-badge max-w-full min-w-0 break-words [overflow-wrap:anywhere] transition hover:bg-rose-100/80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-nest-400/60 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
                   href={`#${item.id}`}
                   aria-label={`${copy.jumpToLabel} ${item.title}`}
                   whileTap={motionEnabled ? { scale: 0.98 } : undefined}

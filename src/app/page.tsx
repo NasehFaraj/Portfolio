@@ -11,7 +11,6 @@ import {
 } from "react-icons/fa6";
 import { FaTelegramPlane } from "react-icons/fa";
 import { SiNestjs } from "react-icons/si";
-import LogoBadge from "@/components/LogoBadge";
 import IconButton from "@/components/IconButton";
 import ScrollNavbar from "@/components/ScrollNavbar";
 import Highlights from "@/components/Highlights";

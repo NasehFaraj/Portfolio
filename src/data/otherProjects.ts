@@ -17,7 +17,6 @@ export type OtherProject = {
     demoUrl?: string;
   };
   repoPrivate: boolean;
-  deployed: boolean;
 };
 
 export const otherProjects: OtherProject[] = [
@@ -52,7 +51,6 @@ export const otherProjects: OtherProject[] = [
     stack: [
       "Express (TypeScript/ESM)",
       "MongoDB/Mongoose",
-      "Socket.io",
       "Passport (Google OAuth)",
       "Nodemailer",
       "JWT",
@@ -66,8 +64,7 @@ export const otherProjects: OtherProject[] = [
       "Axios"
     ],
     links: {},
-    repoPrivate: true,
-    deployed: true
+    repoPrivate: true
   },
   {
     id: "adam-educational-center",
@@ -105,7 +102,6 @@ export const otherProjects: OtherProject[] = [
       "dotenv"
     ],
     links: {},
-    repoPrivate: true,
-    deployed: true
+    repoPrivate: true
   }
 ];
