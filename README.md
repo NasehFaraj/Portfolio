@@ -46,9 +46,3 @@ This repo includes a workflow at `.github/workflows/deploy.yml` that builds and 
 
 Push to `main` to trigger deployment.
 
-## Content Editing
-All copy lives in `src/content/siteContent.ts`.
-- Replace placeholders:
-  - `[PASTE Case Study 1 EXACTLY HERE]`
-  - `[PASTE Case Study 2 EXACTLY HERE]`
-- You can update English/Arabic text, links, and project data in one file.
