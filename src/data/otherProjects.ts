@@ -16,7 +16,6 @@ export type OtherProject = {
   links: {
     demoUrl?: string;
   };
-  repoPrivate: boolean;
 };
 
 export const otherProjects: OtherProject[] = [
@@ -63,8 +62,7 @@ export const otherProjects: OtherProject[] = [
       "Swagger (swagger-jsdoc + swagger-ui-express)",
       "Axios"
     ],
-    links: {},
-    repoPrivate: true
+    links: {}
   },
   {
     id: "adam-educational-center",
@@ -101,7 +99,6 @@ export const otherProjects: OtherProject[] = [
       "Morgan",
       "dotenv"
     ],
-    links: {},
-    repoPrivate: true
+    links: {}
   }
 ];

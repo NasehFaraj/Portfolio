@@ -29,6 +29,7 @@ export default function ProjectCard({ project, isArabic }: ProjectCardProps) {
         }
       : null
   ].filter(Boolean) as { label: string; href: string }[];
+  const hasBadges = badges.length > 0;
   const primaryAction = links.caseStudyUrl
     ? { href: links.caseStudyUrl, label: isArabic ? "عرض التفاصيل" : "View details" }
     : links.demoUrl
@@ -38,24 +39,26 @@ export default function ProjectCard({ project, isArabic }: ProjectCardProps) {
         : null;
 
   return (
-    <div className="group relative h-full overflow-hidden rounded-3xl border border-rose-200/80 bg-white/75 p-5 shadow-sm backdrop-blur transition-all duration-200 ease-out hover:-translate-y-0.5 hover:border-nest-400/55 hover:shadow-lg focus-within:-translate-y-0.5 focus-within:border-nest-400/55 focus-within:shadow-lg sm:p-6">
+    <div className="group relative flex h-full flex-col overflow-hidden rounded-3xl border border-rose-200/80 bg-white/75 p-5 shadow-sm backdrop-blur transition-all duration-200 ease-out hover:-translate-y-0.5 hover:border-nest-400/55 hover:shadow-lg focus-within:-translate-y-0.5 focus-within:border-nest-400/55 focus-within:shadow-lg sm:p-6">
       <div className="pointer-events-none absolute -inset-10 rounded-[2rem] bg-[radial-gradient(circle_at_top,rgba(224,35,78,0.12),transparent_55%)] opacity-0 transition-opacity duration-200 group-hover:opacity-100 group-focus-within:opacity-100" />
 
-      <div className="relative flex items-start justify-between gap-4">
+      <div className={`relative flex items-start gap-4 ${hasBadges ? "justify-between" : ""}`}>
         <h3 className="text-lg font-semibold text-slate-900 sm:text-xl">{title}</h3>
-        <div className="flex flex-wrap justify-end gap-2">
-          {badges.map((badge) => (
-            <a
-              key={`${project.id}-${badge.label}`}
-              href={badge.href}
-              target="_blank"
-              rel="noreferrer"
-              className="light-badge border-rose-200 bg-white text-slate-700 transition hover:border-nest-400/60 hover:text-nest-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-nest-400/50 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
-            >
-              {badge.label}
-            </a>
-          ))}
-        </div>
+        {hasBadges ? (
+          <div className="flex flex-wrap justify-end gap-2">
+            {badges.map((badge) => (
+              <a
+                key={`${project.id}-${badge.label}`}
+                href={badge.href}
+                target="_blank"
+                rel="noreferrer"
+                className="light-badge border-rose-200 bg-white text-slate-700 transition hover:border-nest-400/60 hover:text-nest-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-nest-400/50 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
+              >
+                {badge.label}
+              </a>
+            ))}
+          </div>
+        ) : null}
       </div>
 
       <p className="relative mt-3 text-sm leading-relaxed text-slate-700 [display:-webkit-box] [-webkit-box-orient:vertical] [-webkit-line-clamp:3] overflow-hidden">
@@ -82,7 +85,7 @@ export default function ProjectCard({ project, isArabic }: ProjectCardProps) {
         })}
       </ul>
 
-      <div className="relative mt-5 flex flex-wrap items-end justify-between gap-4">
+      <div className="relative mt-auto flex flex-wrap items-end justify-between gap-4 pt-5">
         <TagChips stack={project.stack} isArabic={isArabic} />
         {primaryAction ? (
           <a

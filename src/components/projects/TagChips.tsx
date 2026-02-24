@@ -4,6 +4,8 @@ type TagChipsProps = {
   stack: string[] | string;
   isArabic: boolean;
 };
+const MAX_TAGS_DESKTOP = 6;
+const MAX_TAGS_MOBILE = 4;
 
 const splitStackToken = (value: string) =>
   value
@@ -27,17 +29,17 @@ const parseStack = (stack: string[] | string) => {
 
 export default function TagChips({ stack, isArabic }: TagChipsProps) {
   const tags = parseStack(stack);
-  const visibleTags = tags.slice(0, 6);
+  const visibleTags = tags.slice(0, MAX_TAGS_DESKTOP);
 
   return (
-    <div className="flex flex-wrap gap-2">
+    <div className="flex max-w-full flex-wrap gap-1.5 sm:gap-2">
       {visibleTags.map((tag, index) => {
         const formatted = formatTagLabel(tag, isArabic);
         return (
           <span
             key={tag}
-            className={`inline-flex h-7 items-center rounded-full border border-rose-200/90 bg-white/80 px-2.5 text-[11px] font-medium text-slate-700 ${
-              index >= 4 ? "hidden sm:inline-flex" : ""
+            className={`inline-flex h-6 max-w-full items-center rounded-full border border-rose-200/90 bg-white/80 px-2.5 text-[10px] font-medium text-slate-700 whitespace-nowrap ${
+              index >= MAX_TAGS_MOBILE ? "hidden sm:inline-flex" : ""
             }${
               isArabic && formatted.isTechnical ? " force-ltr" : ""
             }`}
