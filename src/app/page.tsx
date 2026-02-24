@@ -203,7 +203,7 @@ export default function Home() {
             </Reveal>
             <Reveal delay={0.36}>
               <div className="flex flex-wrap gap-4">
-                <a className="primary-button" href="#projects">
+                <a className="primary-button" href="#experience">
                   {hero.ctaPrimary}
                 </a>
               </div>
