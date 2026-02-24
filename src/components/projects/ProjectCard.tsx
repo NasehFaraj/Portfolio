@@ -44,11 +44,6 @@ export default function ProjectCard({ project, isArabic }: ProjectCardProps) {
       <div className="relative flex items-start justify-between gap-4">
         <h3 className="text-lg font-semibold text-slate-900 sm:text-xl">{title}</h3>
         <div className="flex flex-wrap justify-end gap-2">
-          {project.repoPrivate ? (
-            <span className="light-badge border-rose-200 bg-rose-50 text-slate-700">
-              {isArabic ? "مستودع خاص" : "Private repo"}
-            </span>
-          ) : null}
           {badges.map((badge) => (
             <a
               key={`${project.id}-${badge.label}`}

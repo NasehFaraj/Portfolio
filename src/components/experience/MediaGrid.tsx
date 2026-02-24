@@ -5,6 +5,10 @@ import type { TimelineMediaItem } from "@/data/experienceTimeline";
 type MediaGridProps = {
   media: TimelineMediaItem[];
   isArabic: boolean;
+  mediaLabel?: {
+    en: string;
+    ar: string;
+  };
   compact?: boolean;
   onOpenImage?: (index: number) => void;
 };
@@ -12,6 +16,7 @@ type MediaGridProps = {
 export default function MediaGrid({
   media,
   isArabic,
+  mediaLabel,
   compact = false,
   onOpenImage
 }: MediaGridProps) {
@@ -22,7 +27,7 @@ export default function MediaGrid({
   return (
     <div className="mt-4">
       <p className="text-[11px] uppercase tracking-[0.24em] text-white/45">
-        {isArabic ? "الوسائط" : "Media"}
+        {isArabic ? mediaLabel?.ar ?? "الوسائط" : mediaLabel?.en ?? "Media"}
       </p>
       <div className="mt-2 grid grid-cols-2 gap-2 sm:gap-3">
         {media.slice(0, 2).map((image, index) => (

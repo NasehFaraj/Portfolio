@@ -3,7 +3,6 @@ import { formatTagLabel } from "@/lib/formatTagLabel";
 type TagChipsProps = {
   stack: string[] | string;
   isArabic: boolean;
-  maxVisible?: number;
 };
 
 const splitStackToken = (value: string) =>
@@ -26,19 +25,20 @@ const parseStack = (stack: string[] | string) => {
   });
 };
 
-export default function TagChips({ stack, isArabic, maxVisible = 6 }: TagChipsProps) {
+export default function TagChips({ stack, isArabic }: TagChipsProps) {
   const tags = parseStack(stack);
-  const visibleTags = tags.slice(0, maxVisible);
-  const hiddenCount = Math.max(tags.length - visibleTags.length, 0);
+  const visibleTags = tags.slice(0, 6);
 
   return (
     <div className="flex flex-wrap gap-2">
-      {visibleTags.map((tag) => {
+      {visibleTags.map((tag, index) => {
         const formatted = formatTagLabel(tag, isArabic);
         return (
           <span
             key={tag}
-            className={`inline-flex items-center rounded-full border border-rose-200/90 bg-white/80 px-2.5 py-1 text-xs font-medium text-slate-700${
+            className={`inline-flex h-7 items-center rounded-full border border-rose-200/90 bg-white/80 px-2.5 text-[11px] font-medium text-slate-700 ${
+              index >= 4 ? "hidden sm:inline-flex" : ""
+            }${
               isArabic && formatted.isTechnical ? " force-ltr" : ""
             }`}
             dir={isArabic && formatted.isTechnical ? "ltr" : undefined}
@@ -47,11 +47,6 @@ export default function TagChips({ stack, isArabic, maxVisible = 6 }: TagChipsPr
           </span>
         );
       })}
-      {hiddenCount > 0 ? (
-        <span className="inline-flex items-center rounded-full border border-nest-400/35 bg-rose-50 px-2.5 py-1 text-xs font-semibold text-nest-600">
-          +{hiddenCount}
-        </span>
-      ) : null}
     </div>
   );
 }

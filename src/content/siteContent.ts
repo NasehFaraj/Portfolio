@@ -46,7 +46,7 @@ export const siteContent = {
         "بكالوريوس هندسة/تقنية المعلومات (IT) — خلفية أكاديمية في علوم الحاسوب والأنظمة.",
       supportLine:
         "خبرة بنية تحتية من مشاريع حقيقية: Docker، نشر على VPS، Nginx، HTTPS، وتقوية الخوادم.",
-      ctaPrimary: "شاهد الخبرة"
+      ctaPrimary: "عرض الخبرات"
     }
   },
   social: [

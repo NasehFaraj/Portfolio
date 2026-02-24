@@ -36,11 +36,16 @@ export default function TimelineItemCard({ entry, isArabic }: TimelineItemCardPr
     : null;
 
   return (
-    <article className="group relative overflow-hidden rounded-3xl border border-white/10 bg-night-800/72 p-5 shadow-card backdrop-blur transition-all duration-200 ease-out hover:-translate-y-0.5 hover:border-nest-400/45 hover:shadow-lg focus-within:-translate-y-0.5 focus-within:border-nest-400/45 focus-within:shadow-lg sm:p-6">
+    <article
+      dir={isArabic ? "rtl" : "ltr"}
+      className={`group relative overflow-hidden rounded-3xl border border-white/10 bg-night-800/72 p-5 shadow-card backdrop-blur transition-all duration-200 ease-out hover:-translate-y-0.5 hover:border-nest-400/45 hover:shadow-lg focus-within:-translate-y-0.5 focus-within:border-nest-400/45 focus-within:shadow-lg sm:p-6 ${
+        isArabic ? "text-right" : "text-left"
+      }`}
+    >
       <div className="pointer-events-none absolute -top-28 right-0 h-56 w-56 rounded-full bg-[radial-gradient(circle,rgba(224,35,78,0.22)_0%,rgba(224,35,78,0)_70%)] opacity-0 transition-opacity duration-200 group-hover:opacity-100 group-focus-within:opacity-100" />
       <div className="relative space-y-4">
         <div className="flex items-start justify-between gap-3">
-          <div className="flex min-w-0 items-start gap-3">
+          <div className={`flex min-w-0 items-start gap-3 ${isArabic ? "flex-row-reverse" : ""}`}>
             <div className="mt-0.5 flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-white/10 bg-white/5">
               <Icon className="h-5 w-5 text-nest-400" aria-hidden="true" />
             </div>
@@ -76,7 +81,10 @@ export default function TimelineItemCard({ entry, isArabic }: TimelineItemCardPr
           <div className="min-w-0">
             <ul className="space-y-2">
               {bullets.map((bullet) => (
-                <li key={bullet} className="flex items-start gap-2">
+                <li
+                  key={bullet}
+                  className={`flex items-start gap-2 ${isArabic ? "flex-row-reverse text-right" : ""}`}
+                >
                   <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[#E0234E]" />
                   <span className="text-sm leading-relaxed text-white/75">{bullet}</span>
                 </li>
@@ -88,6 +96,7 @@ export default function TimelineItemCard({ entry, isArabic }: TimelineItemCardPr
             <div className="min-w-0">
               <MediaGrid
                 media={entry.media}
+                mediaLabel={entry.mediaLabel}
                 isArabic={isArabic}
                 compact
                 onOpenImage={(index) => setLightboxIndex(index)}
@@ -106,7 +115,7 @@ export default function TimelineItemCard({ entry, isArabic }: TimelineItemCardPr
                 rel="noreferrer"
                 className="inline-flex items-center rounded-full border border-white/15 bg-white/5 px-3 py-1 text-xs font-medium text-white/80 transition hover:border-nest-400/45 hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-nest-400/55 focus-visible:ring-offset-2 focus-visible:ring-offset-night-900"
               >
-                {link.label}
+                {isArabic ? link.label.ar : link.label.en}
               </a>
             ))}
           </div>
