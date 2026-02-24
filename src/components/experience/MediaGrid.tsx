@@ -38,7 +38,7 @@ export default function MediaGrid({
             aria-label={isArabic ? image.alt.ar : image.alt.en}
             className="group relative block overflow-hidden rounded-xl border border-white/10 bg-black/20 cursor-zoom-in focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-nest-400/55 focus-visible:ring-offset-2 focus-visible:ring-offset-night-900"
           >
-            <div className={`relative ${compact ? "aspect-[4/3]" : "aspect-[4/3]"}`}>
+            <div className={`relative h-28 sm:h-32 ${compact ? "md:h-36" : "md:h-36"}`}>
               <Image
                 src={withBasePath(image.src)}
                 alt={isArabic ? image.alt.ar : image.alt.en}

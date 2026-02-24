@@ -10,7 +10,7 @@ export default function WorkExperienceTimeline({ isArabic }: { isArabic: boolean
     <Section id="experience" variant="dark">
       <div
         dir={isArabic ? "rtl" : "ltr"}
-        className={`mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-20 lg:py-24 ${
+        className={`mx-auto w-full max-w-6xl px-5 py-14 sm:px-6 sm:py-20 lg:py-24 ${
           isArabic ? "text-right" : "text-left"
         }`}
       >
@@ -20,21 +20,16 @@ export default function WorkExperienceTimeline({ isArabic }: { isArabic: boolean
               {isArabic ? "الخبرة العملية" : "Work Experience"}
             </p>
             <h2 className="mt-2 text-3xl font-semibold text-white sm:text-4xl">
-              {isArabic ? "الخبرة العملية والزمن المهني" : "Experience Timeline"}
+              {isArabic ? "الخبرة" : "Experience"}
             </h2>
-            <p className="mt-3 max-w-3xl text-sm leading-relaxed text-white/60 sm:text-base">
-              {isArabic
-                ? "مهندس Back-End ‏(Node.js / NestJS) | بخبرة تشغيلية DevOps ‏(نشر VPS وDocker)"
-                : "Backend Engineer (Node.js / NestJS) | DevOps-minded (VPS Deployments, Docker)"}
-            </p>
           </div>
         </MotionSection>
 
-        <div className="relative rounded-3xl border border-white/5 bg-night-900/45 p-5 sm:p-6 lg:p-7">
+        <div className="relative rounded-3xl border border-white/5 bg-night-900/45 p-4 sm:p-6 lg:p-7">
           <div className="pointer-events-none absolute inset-0 rounded-3xl bg-[linear-gradient(to_bottom,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:100%_22px] opacity-20" />
           <div
-            className={`pointer-events-none absolute bottom-7 top-7 w-px bg-gradient-to-b from-nest-500/85 via-nest-400/45 to-transparent ${
-              isArabic ? "right-[1.62rem] sm:right-[1.87rem]" : "left-[1.62rem] sm:left-[1.87rem]"
+            className={`pointer-events-none absolute bottom-6 top-6 w-px bg-gradient-to-b from-nest-500/70 via-nest-400/35 to-transparent ${
+              isArabic ? "right-[0.95rem] sm:right-[1.87rem]" : "left-[0.95rem] sm:left-[1.87rem]"
             }`}
           />
 
@@ -44,14 +39,14 @@ export default function WorkExperienceTimeline({ isArabic }: { isArabic: boolean
                 key={entry.id}
                 className={`grid gap-3 sm:gap-4 ${
                   isArabic
-                    ? "grid-cols-[minmax(0,1fr)_2.5rem] sm:grid-cols-[minmax(0,1fr)_2.9rem]"
-                    : "grid-cols-[2.5rem_minmax(0,1fr)] sm:grid-cols-[2.9rem_minmax(0,1fr)]"
+                    ? "grid-cols-[minmax(0,1fr)_1.8rem] sm:grid-cols-[minmax(0,1fr)_2.9rem]"
+                    : "grid-cols-[1.8rem_minmax(0,1fr)] sm:grid-cols-[2.9rem_minmax(0,1fr)]"
                 }`}
               >
                 <div
                   className={`flex justify-center pt-5 sm:pt-6 ${isArabic ? "order-2" : "order-1"}`}
                 >
-                  <span className="h-3.5 w-3.5 rounded-full border-2 border-[#E0234E]/55 bg-night-900 shadow-[0_0_0_3px_rgba(224,35,78,0.2)]" />
+                  <span className="h-2.5 w-2.5 rounded-full border border-[#E0234E]/60 bg-night-900 shadow-[0_0_0_2px_rgba(224,35,78,0.14)] sm:h-3.5 sm:w-3.5 sm:border-2 sm:shadow-[0_0_0_3px_rgba(224,35,78,0.2)]" />
                 </div>
                 <div className={isArabic ? "order-1" : "order-2"}>
                   <TimelineItemCard entry={entry} isArabic={isArabic} />
