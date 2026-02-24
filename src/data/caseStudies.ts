@@ -76,235 +76,27 @@ export type CaseStudy = {
   };
 };
 
-const REMOVEDSummary =
-  "A production express + MongoDB backend for a documentation/archive platform, with secure auth and media uploads.";
-
-const REMOVEDBullets = [
-  "express (TypeScript) backend with jsonwebtoken auth, password hashing, and security middleware.",
-  "MongoDB modeling with mongoose + change-safe patterns and predictable IDs (mongoose-sequence).",
-  "Media uploads using multer with image processing via sharp."
-];
-
-const REMOVEDStackLine =
-  "Stack: express • TypeScript • MongoDB/mongoose • mongoose-sequence • jsonwebtoken • bcrypt • helmet • cors • dotenv • morgan • multer • sharp";
-
-const REMOVEDStackLineAr =
-  "التقنيات: express • TypeScript • MongoDB/mongoose • mongoose-sequence • jsonwebtoken • bcrypt • helmet • cors • dotenv • morgan • multer • sharp";
-
-const trendyStackLine =
+const trendingStackLine =
   "Stack: NestJS • PostgreSQL • TypeORM • JWT • Cloudinary • Firebase • Docker";
 
-const trendyStackLineAr =
+const trendingStackLineAr =
   "التقنيات: NestJS • PostgreSQL • TypeORM • JWT • Cloudinary • Firebase • Docker";
-
-const REMOVEDOverview = [
-  "This project is a production backend for a documentation/archive platform.",
-  "I built the API using express with TypeScript and ESM to keep the codebase explicit and typed.",
-  "The data layer uses MongoDB with mongoose to represent records and relationships safely.",
-  "Authentication and baseline security are implemented with jsonwebtoken, bcrypt, helmet, and cors.",
-  "Media uploads are supported through multer, with image processing handled by sharp."
-];
-
-const REMOVEDMyRole = [
-  "I designed and built the express (TypeScript) REST API.",
-  "I modeled MongoDB collections using mongoose.",
-  "I implemented authentication/security layers (jsonwebtoken, bcrypt, helmet, cors).",
-  "I handled media uploads (multer) and image processing (sharp).",
-  "I deployed the service to production."
-];
-
-const REMOVEDStack = [
-  "express (TypeScript, ESM)",
-  "MongoDB + mongoose + mongoose-sequence",
-  "jsonwebtoken, bcrypt, helmet, cors, dotenv",
-  "morgan",
-  "multer + sharp"
-];
-
-const REMOVEDImplementation = [
-  "Security middleware with helmet and cors.",
-  "Password hashing using bcrypt.",
-  "jsonwebtoken-based authentication.",
-  "Configuration loading using dotenv.",
-  "CORS configuration for cross-origin requests.",
-  "Incremental IDs with mongoose-sequence.",
-  "Request logging using morgan.",
-  "Upload pipeline using multer; image resizing/compression using sharp."
-];
-
-const REMOVEDDeployment = ["Deployed and operated the service in production."];
-
-const REMOVEDChallenges: CaseStudyChallenge[] = [
-  {
-    challenge: "Production crypto-mining incidents (repeated).",
-    fix: "Hardening actions (no-new-privileges, non-root, docker compose).",
-    outcome: "Service stabilized after hardening; repeated compromises stopped."
-  },
-  {
-    challenge: "Upload validation mistake.",
-    fix: "Restricted allowed file types and validated uploads.",
-    outcome:
-      "Malicious upload vector removed by stricter validation; upload flow became safer."
-  },
-  {
-    challenge: "SSH brute-force attempts.",
-    fix: "Disabled password login; SSH keys only.",
-    outcome:
-      "Reduced attack surface by disabling password login and using SSH keys only."
-  }
-];
 
 export const caseStudies: CaseStudy[] = [
   {
-    slug: "REMOVED-REMOVED-REMOVED",
-    title: "REMOVED REMOVED REMOVED",
-    card: {
-      liveUrl: "https://REMOVED-of-REMOVED-REMOVED.com/"
-    },
-    i18n: {
-      en: {
-        title: "REMOVED REMOVED REMOVED",
-        heroKicker: "Case Study",
-        backLabel: "Back to case studies",
-        jumpToLabel: "Jump to",
-        tocTitle: "Table of contents",
-        toc: {
-          overview: "Overview",
-          myRole: "My Role",
-          stack: "Stack",
-          implementation: "Implementation Notes",
-          deployment: "Deployment",
-          challenges: "Challenges"
-        },
-        chips: {
-          roleLabel: "Role",
-          roleValue: "Backend + Deployment",
-          statusLabel: "Status",
-          statusValue: "Production",
-          repoLabel: "Repo",
-          repoValue: "Private",
-          liveLabel: "Live"
-        },
-        challengeLabels: {
-          challenge: "Challenge",
-          fix: "Fix",
-          outcome: "Outcome"
-        },
-        heroSummary: REMOVEDSummary,
-        heroBullets: REMOVEDBullets,
-        heroStackLine: REMOVEDStackLine,
-        overview: REMOVEDOverview,
-        myRole: REMOVEDMyRole,
-        stack: REMOVEDStack,
-        implementation: REMOVEDImplementation,
-        deployment: REMOVEDDeployment,
-        challenges: REMOVEDChallenges
-      },
-      ar: {
-        title: "REMOVED حرية REMOVED",
-        heroKicker: "دراسة حالة",
-        backLabel: "العودة إلى دراسات الحالة",
-        jumpToLabel: "انتقل إلى",
-        tocTitle: "جدول المحتويات",
-        toc: {
-          overview: "نظرة عامة",
-          myRole: "دوري",
-          stack: "التقنيات",
-          implementation: "ملاحظات تنفيذية",
-          deployment: "النشر",
-          challenges: "التحديات"
-        },
-        chips: {
-          roleLabel: "الدور",
-          roleValue: "Backend + Deployment",
-          statusLabel: "الحالة",
-          statusValue: "Production",
-          repoLabel: "المستودع",
-          repoValue: "Private",
-          liveLabel: "الموقع"
-        },
-        challengeLabels: {
-          challenge: "التحدي",
-          fix: "الإصلاح",
-          outcome: "النتيجة"
-        },
-        heroSummary:
-          "باك-إند إنتاجي مبني بـ express وMongoDB لمنصة توثيق/أرشفة، مع تسجيل دخول آمن ودعم رفع ملفات ومعالجة صور.",
-        heroBullets: [
-          "باك-إند express (TypeScript) مع مصادقة jsonwebtoken وتشفير كلمات المرور وميدلوير حماية.",
-          "نمذجة MongoDB باستخدام mongoose مع معرفات متزايدة عبر mongoose-sequence.",
-          "رفع الملفات عبر multer ومعالجة الصور عبر sharp."
-        ],
-        heroStackLine:
-          "التقنيات: express • TypeScript • MongoDB/mongoose • mongoose-sequence • jsonwebtoken • bcrypt • helmet • cors • dotenv • morgan • multer • sharp",
-        overview: [
-          "هذا المشروع هو باك-إند إنتاجي لمنصة توثيق/أرشفة.",
-          "قمت ببناء الـ API باستخدام express مع TypeScript وESM للحفاظ على وضوح الأنواع.",
-          "طبقة البيانات تستخدم MongoDB مع mongoose لتمثيل السجلات بشكل منظم.",
-          "طبقة الحماية تعتمد jsonwebtoken وbcrypt وhelmet وcors.",
-          "رفع الوسائط يتم عبر multer، ومعالجة الصور عبر sharp."
-        ],
-        myRole: [
-          "قمت بتصميم وبناء REST API باستخدام express (TypeScript).",
-          "قمت بنمذجة بيانات MongoDB باستخدام mongoose.",
-          "نفذت طبقات المصادقة والحماية (jsonwebtoken وbcrypt وhelmet وcors).",
-          "توليت رفع الملفات عبر multer ومعالجة الصور عبر sharp.",
-          "قمت بنشر الخدمة للإنتاج."
-        ],
-        stack: [
-          "express (TypeScript, ESM)",
-          "MongoDB + mongoose + mongoose-sequence",
-          "jsonwebtoken, bcrypt, helmet, cors, dotenv",
-          "morgan",
-          "multer + sharp"
-        ],
-        implementation: [
-          "ميدلوير حماية باستخدام helmet وcors.",
-          "تشفير كلمات المرور باستخدام bcrypt.",
-          "مصادقة باستخدام jsonwebtoken.",
-          "تحميل الإعدادات عبر dotenv.",
-          "إعداد cors للطلبات العابرة للنطاق.",
-          "معرفات متزايدة باستخدام mongoose-sequence.",
-          "تسجيل الطلبات عبر morgan.",
-          "رفع الملفات عبر multer ومعالجة الصور عبر sharp."
-        ],
-        deployment: ["تم نشر وتشغيل الخدمة في الإنتاج."],
-        challenges: [
-          {
-            challenge: "حوادث تعدين عملات على الإنتاج (متكررة).",
-            fix: "إجراءات تقوية (no-new-privileges وnon-root وdocker compose).",
-            outcome: "استقرت الخدمة بعد التقوية وتوقفت الاختراقات المتكررة."
-          },
-          {
-            challenge: "خطأ في التحقق من الملفات المرفوعة.",
-            fix: "تقييد الأنواع المسموحة والتحقق من الرفع.",
-            outcome:
-              "تم إزالة مسار رفع الملفات الضارة وأصبح تدفق الرفع أكثر أمانًا."
-          },
-          {
-            challenge: "محاولات brute-force على SSH.",
-            fix: "إيقاف تسجيل الدخول بكلمة مرور والاكتفاء بمفاتيح SSH.",
-            outcome:
-              "تم تقليل سطح الهجوم بتعطيل كلمات المرور والاكتفاء بمفاتيح SSH."
-          }
-        ]
-      }
-    }
-  },
-  {
-    slug: "trendy",
-    title: "trendy",
+    slug: "trending",
+    title: "Trending",
     card: {},
     i18n: {
       en: {
-        title: "trendy",
-        heroKicker: "Case Study",
-        backLabel: "Back to case studies",
+        title: "Trending",
+        heroKicker: "Work Experience",
+        backLabel: "Back to work experience",
         jumpToLabel: "Jump to",
         tocTitle: "Table of contents",
         toc: {
           overview: "Overview",
-          myRole: "My Role",
+          myRole: "Responsibilities",
           stack: "Stack",
           implementation: "Implementation Notes",
           deployment: "Deployment",
@@ -318,11 +110,11 @@ export const caseStudies: CaseStudy[] = [
         },
         chips: {
           roleLabel: "Role",
-          roleValue: "Backend + Deployment",
-          statusLabel: "Status",
-          statusValue: "Production",
-          repoLabel: "Repo",
-          repoValue: "Private",
+          roleValue: "Backend Engineer",
+          statusLabel: "Duration",
+          statusValue: "Feb 2025 - Present (1 year)",
+          repoLabel: "",
+          repoValue: "",
           liveLabel: "Live"
         },
         challengeLabels: {
@@ -331,25 +123,25 @@ export const caseStudies: CaseStudy[] = [
           outcome: "Outcome"
         },
         heroSummary:
-          "An API built with NestJS and PostgreSQL for a multi-role logistics/marketplace platform connecting customers, stores, and drivers. It covers the full order lifecycle from cart to delivery with pickup/drop-off tasks, driver assignment by zone, speed, and availability, real-time notifications, and order status tracking. It includes product catalog management, media assets, reviews, and admin analytics for orders and revenue.",
+          "Production backend ownership for a multi-role e-commerce & logistics platform (customers, merchants, and drivers). I delivered core APIs and workflows that power the full order lifecycle-from cart to delivery-covering pickup/drop-off tasks, driver assignment logic, real-time notifications, and order status tracking. The system also supports catalog & media management, reviews, and admin analytics for orders and revenue.",
         heroBullets: [
-          "Multi-role logistics/marketplace API covering the cart-to-delivery flow.",
-          "Driver assignment by zone/speed/availability with task-based pickup and delivery.",
-          "Catalog + media management, Firebase push notifications, and admin analytics."
+          "Owned backend delivery for a multi-role marketplace/logistics API covering cart-to-delivery workflows.",
+          "Implemented driver assignment and task-based pickup/delivery flows with operational constraints (zone/speed/availability).",
+          "Built catalog & media modules, notifications, and admin insights to support day-to-day operations."
         ],
-        heroStackLine: trendyStackLine,
+        heroStackLine: trendingStackLine,
         overview: [
-          "This project is an API for a multi-role logistics/marketplace platform connecting customers, stores, and drivers.",
+          "This work experience reflects production backend ownership for a multi-role logistics/marketplace platform connecting customers, stores, and drivers.",
           "It covers the full order lifecycle from cart to delivery, including pickup/delivery tasks, driver assignment by zone, speed, and availability, real-time notifications, and order status tracking.",
-          "It includes product catalog management, media assets, reviews, and admin analytics for orders and revenue."
+          "The platform supports product catalog management, media assets, reviews, and admin analytics for orders and revenue."
         ],
         myRole: [
-          "I designed and built the NestJS backend.",
-          "I modeled PostgreSQL using TypeORM.",
-          "I implemented RBAC and auth flows (JWT + Refresh Token via HTTP-only cookie + Google OAuth).",
-          "I implemented the order lifecycle and driver tasks logic.",
-          "I integrated Cloudinary signed uploads and Firebase push notifications.",
-          "I prepared Docker-based staging/production setup and a health endpoint."
+          "Owned the NestJS backend architecture and core service modules.",
+          "Designed PostgreSQL data model and TypeORM relations for operational workflows.",
+          "Implemented authentication and RBAC (JWT + refresh tokens via HTTP-only cookies; Google OAuth where applicable).",
+          "Delivered order lifecycle logic and driver task workflows end-to-end.",
+          "Integrated Cloudinary signed uploads for media and Firebase push notifications.",
+          "Prepared Docker-based staging/production deployments and health monitoring endpoints."
         ],
         stack: [
           "NestJS (TypeScript)",
@@ -364,7 +156,18 @@ export const caseStudies: CaseStudy[] = [
         ],
         implementation: [],
         deployment: [],
-        challenges: [],
+        challenges: [
+          {
+            challenge: "Repeated crypto-mining incidents targeting production containers.",
+            fix: "Hardened runtime and Compose defaults: non-root containers, no-new-privileges, tighter permissions, and stricter deployment controls.",
+            outcome: "Production stability improved; compromises stopped and uptime normalized."
+          },
+          {
+            challenge: "Persistent SSH brute-force attempts against VPS environments.",
+            fix: "Disabled password auth and enforced SSH key-only access for operational accounts.",
+            outcome: "Attack surface reduced and unauthorized login attempts became significantly less risky."
+          }
+        ],
         apiHighlightLabels: {
           auth: "Auth & Users",
           catalog: "Catalog",
@@ -414,14 +217,14 @@ export const caseStudies: CaseStudy[] = [
         ]
       },
       ar: {
-        title: "ترندي",
-        heroKicker: "دراسة حالة",
-        backLabel: "العودة إلى دراسات الحالة",
+        title: "Trending",
+        heroKicker: "خبرة عملية",
+        backLabel: "العودة إلى الخبرة العملية",
         jumpToLabel: "انتقل إلى",
         tocTitle: "جدول المحتويات",
         toc: {
           overview: "نظرة عامة",
-          myRole: "دوري",
+          myRole: "المسؤوليات",
           stack: "التقنيات",
           implementation: "ملاحظات تنفيذية",
           deployment: "النشر",
@@ -435,11 +238,11 @@ export const caseStudies: CaseStudy[] = [
         },
         chips: {
           roleLabel: "الدور",
-          roleValue: "Backend + Deployment",
-          statusLabel: "الحالة",
-          statusValue: "Production",
-          repoLabel: "المستودع",
-          repoValue: "Private",
+          roleValue: "مهندس Back-End",
+          statusLabel: "المدة",
+          statusValue: "فبراير 2025 - حتى الآن (سنة واحدة)",
+          repoLabel: "",
+          repoValue: "",
           liveLabel: "الموقع"
         },
         challengeLabels: {
@@ -448,25 +251,25 @@ export const caseStudies: CaseStudy[] = [
           outcome: "النتيجة"
         },
         heroSummary:
-          "واجهة API مبنية بـ NestJS وPostgreSQL لمنصة لوجستية/ماركت-بليس متعددة الأدوار تربط العملاء بالمتاجر والسائقين. تغطي دورة الطلب كاملة من السلة وحتى التسليم مع مهام استلام/توصيل، تعيين السائقين حسب المنطقة والسرعة والتوفر، وإشعارات فورية ومتابعة حالة الطلب. فيها إدارة كتالوج المنتجات، ملفات ميديا، تقييمات، وتحليلات إدارية للطلبات والإيرادات.",
+          "امتلاك باك-إند إنتاجي لمنصة تجارة إلكترونية ولوجستيات متعددة الأدوار (عملاء، تجار، سائقون). تم تسليم واجهات وخطوط عمل أساسية تغطي دورة الطلب كاملة من السلة حتى التسليم، بما يشمل مهام الاستلام/التسليم، منطق تعيين السائقين، الإشعارات الفورية، وتتبع حالة الطلب. كما تدعم المنصة إدارة الكتالوج والميديا والتقييمات وتحليلات الإدارة للطلبات والإيرادات.",
         heroBullets: [
-          "واجهة لوجستية/ماركت-بليس متعددة الأدوار تغطي دورة الطلب من السلة حتى التسليم.",
-          "تعيين السائقين حسب المنطقة والسرعة والتوفر مع مهام PICKUP/DELIVERY.",
-          "إدارة كتالوج وميديا وإشعارات Push وتحليلات إدارية."
+          "امتلاك تسليم باك-إند لمنصة Marketplace/Logistics متعددة الأدوار تغطي دورة cart-to-delivery.",
+          "تنفيذ منطق تعيين السائقين وتدفقات مهام pickup/delivery بقيود تشغيلية (المنطقة/السرعة/التوفر).",
+          "بناء وحدات الكتالوج والميديا والإشعارات ورؤى الإدارة لدعم التشغيل اليومي."
         ],
-        heroStackLine: trendyStackLineAr,
+        heroStackLine: trendingStackLineAr,
         overview: [
-          "واجهة API مبنية بـ NestJS وPostgreSQL لمنصة لوجستية/ماركت-بليس متعددة الأدوار تربط العملاء بالمتاجر والسائقين.",
-          "تغطي دورة الطلب كاملة من السلة وحتى التسليم مع مهام استلام/توصيل، تعيين السائقين حسب المنطقة والسرعة والتوفر، وإشعارات فورية ومتابعة حالة الطلب.",
-          "فيها إدارة كتالوج المنتجات، ملفات ميديا، تقييمات، وتحليلات إدارية للطلبات والإيرادات."
+          "هذه خبرة عملية تركّز على امتلاك باك-إند منصة لوجستية/ماركت-بليس متعددة الأدوار تربط العملاء بالمتاجر والسائقين.",
+          "تغطي دورة الطلب كاملة من السلة وحتى التسليم مع مهام استلام/توصيل وتعيين السائقين حسب المنطقة والسرعة والتوفر، إضافة إلى إشعارات فورية ومتابعة حالة الطلب.",
+          "تدعم المنصة إدارة كتالوج المنتجات والوسائط والتقييمات وتحليلات إدارية للطلبات والإيرادات."
         ],
         myRole: [
-          "صممت وبنيت باك-إند NestJS.",
-          "نمذجت PostgreSQL باستخدام TypeORM.",
-          "نفذت RBAC وتدفقات المصادقة (JWT + Refresh Token عبر HTTP-only cookie + Google OAuth).",
-          "نفذت دورة الطلب ومنطق مهام السائقين.",
-          "دمجت Cloudinary signed uploads وإشعارات Push عبر Firebase.",
-          "حضّرت إعداد Docker لبيئات staging/production مع Health endpoint."
+          "امتلكت معمارية باك-إند NestJS ووحدات الخدمات الأساسية.",
+          "صممت نموذج بيانات PostgreSQL وعلاقات TypeORM لسير العمل التشغيلي.",
+          "نفذت المصادقة وصلاحيات RBAC (JWT + refresh tokens عبر HTTP-only cookies؛ وGoogle OAuth عند الحاجة).",
+          "سلمت منطق دورة الطلب وتدفقات مهام السائقين من النهاية إلى النهاية.",
+          "دمجت Cloudinary signed uploads للوسائط وإشعارات Firebase Push.",
+          "حضرت نشر Docker لبيئات staging/production مع نقاط health monitoring."
         ],
         stack: [
           "NestJS (TypeScript)",
@@ -481,7 +284,18 @@ export const caseStudies: CaseStudy[] = [
         ],
         implementation: [],
         deployment: [],
-        challenges: [],
+        challenges: [
+          {
+            challenge: "حوادث تعدين عملات متكررة استهدفت حاويات الإنتاج.",
+            fix: "تقوية إعدادات التشغيل وCompose: تشغيل non-root، تفعيل no-new-privileges، تشديد الصلاحيات، وضوابط نشر أكثر صرامة.",
+            outcome: "تحسن الاستقرار في الإنتاج وتوقفت الاختراقات المتكررة وعاد uptime للوضع الطبيعي."
+          },
+          {
+            challenge: "محاولات brute-force مستمرة على SSH في بيئات VPS.",
+            fix: "تعطيل password auth وفرض SSH key-only لحسابات التشغيل.",
+            outcome: "انخفض سطح الهجوم وأصبحت محاولات الدخول غير المصرح بها أقل خطورة بشكل ملحوظ."
+          }
+        ],
         apiHighlightLabels: {
           auth: "المصادقة والمستخدمون",
           catalog: "الكتالوج",
@@ -506,9 +320,7 @@ export const caseStudies: CaseStudy[] = [
           "تقسيم الطلب إلى مهام PICKUP/DELIVERY، وتعيين أقل سائق مشغول حسب المنطقة والسرعة والتوفر مع منع تداخل نوافذ زمنية لنفس السائق.",
           "تحديث حالة المهمة يحدّث حالة الطلب، مع تأكيد الاستلام والتسليم (برمز تسليم). تتبع للعميل والبائع."
         ],
-        notifications: [
-          "تسجيل أجهزة وإرسال Push عبر Firebase، مع إرسال جماعي من الأدمن."
-        ],
+        notifications: ["تسجيل أجهزة وإرسال Push عبر Firebase، مع إرسال جماعي من الأدمن."],
         adminAnalytics: [
           "ملخص طلبات/إيرادات/مستخدمين، أفضل المتاجر والسائقين، ومخططات زمنية للطلبات والإيرادات."
         ],

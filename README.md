@@ -5,9 +5,7 @@
    ```bash
    npm install
    ```
-2. Add the REMOVED logo:
-   - Place the file at `public/assets/REMOVED-logo.png` (already referenced in code).
-3. Configure base path (GitHub Pages):
+2. Configure base path (GitHub Pages):
    - For a repo site (https://username.github.io/repo-name), set:
      ```bash
      NEXT_PUBLIC_BASE_PATH=/repo-name
@@ -45,4 +43,3 @@ This repo includes a workflow at `.github/workflows/deploy.yml` that builds and 
    - For user pages: leave it empty.
 
 Push to `main` to trigger deployment.
-

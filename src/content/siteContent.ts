@@ -13,24 +13,22 @@ export const siteContent = {
       en: "Backend Engineering & Infrastructure",
       ar: "هندسة الخلفية والبنية التحتية"
     },
-    selectWork: { en: "Select work", ar: "أعمال مختارة" },
-    deepDives: { en: "Other work", ar: "أعمال أخرى" },
-    caseStudiesTitle: { en: "Other Projects", ar: "مشاريع أخرى" }
+    selectWork: { en: "Work Experience", ar: "الخبرة العملية" },
+    deepDives: { en: "Projects", ar: "المشاريع" },
+    caseStudiesTitle: { en: "Projects", ar: "المشاريع" }
   },
   nav: {
     en: [
       { label: "Home", href: "#hero" },
       { label: "Stack & Capabilities", href: "#stack" },
-      { label: "Projects", href: "#projects" },
-      { label: "Other Projects", href: "#other-projects" },
-      { label: "Other Highlights", href: "#highlights" }
+      { label: "Work Experience", href: "#experience" },
+      { label: "Projects", href: "#other-projects" }
     ],
     ar: [
       { label: "الرئيسية", href: "#hero" },
       { label: "التقنيات", href: "#stack" },
-      { label: "المشاريع", href: "#projects" },
-      { label: "مشاريع أخرى", href: "#other-projects" },
-      { label: "إنجازات إضافية", href: "#highlights" }
+      { label: "الخبرة العملية", href: "#experience" },
+      { label: "المشاريع", href: "#other-projects" }
     ]
   },
   hero: {
@@ -40,7 +38,7 @@ export const siteContent = {
         "B.Sc. in Information Technology (Informatics Engineering) — academic foundation in CS and systems.",
       supportLine:
         "Infrastructure experience from real projects: Docker, VPS deployments, Nginx, HTTPS, and server hardening.",
-      ctaPrimary: "View Projects"
+      ctaPrimary: "View Experience"
     },
     ar: {
       subheadline: "واجهات آمنة • باك-إند قابل للتوسع • معمارية نظيفة",
@@ -48,7 +46,7 @@ export const siteContent = {
         "بكالوريوس هندسة/تقنية المعلومات (IT) — خلفية أكاديمية في علوم الحاسوب والأنظمة.",
       supportLine:
         "خبرة بنية تحتية من مشاريع حقيقية: Docker، نشر على VPS، Nginx، HTTPS، وتقوية الخوادم.",
-      ctaPrimary: "شاهد المشاريع"
+      ctaPrimary: "شاهد الخبرة"
     }
   },
   social: [
@@ -195,11 +193,11 @@ export const siteContent = {
         title: { en: "University Teaching", ar: "التدريس الجامعي" },
         bullets: {
           en: [
-            "Taught programming fundamentals (C++) and backend foundations (Node.js, Express, MVC, REST APIs) as a practical instructor at the Faculty of Informatics Engineering, Arab Private University for Science and Technology (AUST) — Hama, Syria.",
+            "Taught programming fundamentals (C++) and backend foundations (Node.js, Express, MVC, REST APIs) as a practical instructor at the Faculty of Informatics Engineering, Arab Private University for Science and Technology (AUST) — Hama.",
             "Prepared lab sessions and practical exercises, quizzes, grading rubrics, and provided code reviews to help students improve."
           ],
           ar: [
-            "درّست أساسيات البرمجة (C++) وأساسيات تطوير الباك-إند (Node.js، Express، MVC، REST APIs) كمدرّس عملي في كلية الهندسة المعلوماتية في الجامعة العربية الخاصة للعلوم والتكنولوجيا (AUST) — حماة، REMOVED.",
+            "درّست أساسيات البرمجة (C++) وأساسيات تطوير الباك-إند (Node.js، Express، MVC، REST APIs) كمدرّس عملي في كلية الهندسة المعلوماتية في الجامعة العربية الخاصة للعلوم والتكنولوجيا (AUST) — حماة.",
             "أعددت جلسات مخبرية وتمارين تطبيقية، واختبارات قصيرة، ومعايير تصحيح (Rubrics)، وقدّمت مراجعات للكود لمساعدة الطلاب على تحسين مستواهم."
           ]
         }
@@ -311,43 +309,19 @@ export const siteContent = {
       }
     ]
   },
-  projects: {
-    enTitle: "Featured Projects",
-    arTitle: "المشاريع المميزة",
+  experience: {
+    enTitle: "Work Experience",
+    arTitle: "الخبرة العملية",
     items: [
       {
-        id: "REMOVED",
-        enTitle: "REMOVED REMOVED REMOVED (REMOVED حرية REMOVED)",
-        arTitle: "REMOVED REMOVED REMOVED (REMOVED حرية REMOVED)",
-        logo: "/assets/REMOVED-logo.png",
-        oneLiner:
-          "A full platform for documenting sensitive historical records—my contribution: the backend moderation workflow, data modeling, and production deployment hardening.",
-        arOneLiner:
-          "منصة كاملة لتوثيق سجلات تاريخية حساسة—مساهمتي كانت بناء الباك-إند: سير المراجعة، نمذجة البيانات، والنشر والتقوية على خادم VPS.",
-        highlights: [
-          "Owned the backend workflow: public submissions \u2192 review queue \u2192 approve/reject \u2192 automated update to public records",
-          "Designed MongoDB schemas for REMOVED, massacres, comments, and change requests with auditable history",
-          "Deployed and secured the backend stack on a Linux VPS (Docker + Nginx + HTTPS) with defensive hardening practices"
-        ],
-        arHighlights: [
-          "تنفيذ باك-إند سير العمل: مساهمات الجمهور \u2192 قائمة مراجعة \u2192 قبول/رفض \u2192 تحديث تلقائي للسجلات العامة",
-          "تصميم نماذج MongoDB للREMOVED والمجازر والتعليقات وطلبات التعديل مع سجل تغييرات قابل للتدقيق",
-          "نشر وتأمين الباك-إند على Linux VPS (Docker + Nginx + HTTPS) مع ممارسات تقوية دفاعية"
-        ],
-        stack: ["Node.js API", "MongoDB", "Docker", "Nginx", "VPS/HTTPS"],
-        liveUrl: "https://REMOVED-of-REMOVED-REMOVED.com/",
-        caseStudyHref: "/case-studies/REMOVED-REMOVED-REMOVED",
-        caseStudyLabel: "Read case study",
-        liveLabel: "Live site",
-        privateCode: true
-      },
-      {
-        id: "trendy",
-        enTitle: "trendy — E-commerce & Logistics Platform",
-        arTitle: "trendy — منصة تجارة إلكترونية ولوجستيات",
+        id: "trending",
+        enTitle: "Trending — E-commerce & Logistics",
+        arTitle: "Trending — منصة تجارة إلكترونية ولوجستيات",
+        role: { en: "Backend Engineer", ar: "مهندس Back-End" },
+        duration: { en: "Feb 2025 - Present (1 year)", ar: "فبراير 2025 - حتى الآن (سنة واحدة)" },
         logo: "placeholder",
         oneLiner:
-          "A multi-app system spanning 4 roles (customer/merchant/driver/admin)—my contribution: the NestJS backend architecture, RBAC APIs, and order/delivery workflows.",
+          "Production backend ownership for a multi-role platform (customer/merchant/driver/admin), focused on backend architecture, RBAC APIs, and order/delivery workflows.",
         highlights: [
           "Designed a modular NestJS + PostgreSQL backend serving 4 role-based apps with strict RBAC",
           "Implemented order lifecycle + status history (audit-friendly) and delivery confirmation readiness (OTP roadmap)",
@@ -362,10 +336,10 @@ export const siteContent = {
         ],
         stack: ["NestJS", "PostgreSQL", "Docker", "Nginx", "VPS"],
         liveUrl: "",
-        caseStudyHref: "/case-studies/trendy",
-        caseStudyLabel: "Read case study",
+        caseStudyHref: "/case-studies/trending",
+        caseStudyLabel: "View role details",
         liveLabel: "Live site",
-        privateCode: true
+        privateCode: false
       }
     ]
   },

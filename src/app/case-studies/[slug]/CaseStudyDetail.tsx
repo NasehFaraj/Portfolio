@@ -328,7 +328,7 @@ export default function CaseStudyDetail({ caseStudy }: { caseStudy: CaseStudy })
         >
           <Link
             className="primary-button min-w-0 transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-nest-400/60 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
-            href="/#other-projects"
+            href="/#experience"
             aria-label={copy.backLabel}
           >
             <span className="truncate">{copy.backLabel}</span>
@@ -368,9 +368,11 @@ export default function CaseStudyDetail({ caseStudy }: { caseStudy: CaseStudy })
               <span className="light-badge max-w-full min-w-0 break-words [overflow-wrap:anywhere]">
                 {copy.chips.statusLabel}: {copy.chips.statusValue}
               </span>
-              <span className="light-badge max-w-full min-w-0 break-words [overflow-wrap:anywhere]">
-                {copy.chips.repoLabel}: {copy.chips.repoValue}
-              </span>
+              {copy.chips.repoLabel && copy.chips.repoValue ? (
+                <span className="light-badge max-w-full min-w-0 break-words [overflow-wrap:anywhere]">
+                  {copy.chips.repoLabel}: {copy.chips.repoValue}
+                </span>
+              ) : null}
               {liveUrl ? (
                 <a
                   className="inline-flex max-w-full min-w-0 items-center rounded-full border border-nest-400/60 bg-rose-50/80 px-3 py-1 text-xs font-semibold text-nest-600 transition break-words [overflow-wrap:anywhere] hover:bg-rose-100/80 hover:underline underline-offset-4"

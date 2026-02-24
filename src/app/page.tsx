@@ -1,7 +1,5 @@
 "use client";
 
-import Image from "next/image";
-import Link from "next/link";
 import { useEffect, useMemo, useRef, useState } from "react";
 import {
   FaEnvelope,
@@ -13,14 +11,12 @@ import { FaTelegramPlane } from "react-icons/fa";
 import { SiNestjs } from "react-icons/si";
 import IconButton from "@/components/IconButton";
 import ScrollNavbar from "@/components/ScrollNavbar";
-import Highlights from "@/components/Highlights";
 import StackAndCapabilities from "@/components/StackAndCapabilities";
-import Section from "@/components/Section";
+import WorkExperienceTimeline from "@/components/experience/WorkExperienceTimeline";
+import ProjectsSection from "@/components/projects/ProjectsSection";
 import { siteContent } from "@/content/siteContent";
 import { formatTagLabel } from "@/lib/formatTagLabel";
 import Reveal from "@/components/motion/Reveal";
-import { MotionItem, MotionSection, MotionStagger } from "@/lib/motion";
-import { withBasePath } from "@/lib/withBasePath";
 
 const LANG_KEY = "portfolio:lang";
 
@@ -135,9 +131,6 @@ export default function Home() {
     [isArabic]
   );
   const hero = isArabic ? siteContent.hero.ar : siteContent.hero.en;
-  const headingDark = "text-white";
-  const mutedDark = "text-white/60";
-
   return (
     <main
       dir={isArabic ? "rtl" : "ltr"}
@@ -272,204 +265,8 @@ export default function Home() {
 
       <StackAndCapabilities isArabic={isArabic} />
 
-      <Section id="projects" variant="dark">
-        <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6 sm:py-16">
-          <MotionSection>
-            <div className="mb-8 flex items-end justify-between sm:mb-10">
-              <div>
-                <p className="text-xs uppercase tracking-[0.3em] text-white/50">
-                  {isArabic
-                    ? siteContent.labels.selectWork.ar
-                    : siteContent.labels.selectWork.en}
-                </p>
-                <h2 className={`text-2xl font-semibold ${headingDark} sm:text-3xl`}>
-                  {isArabic ? siteContent.projects.arTitle : siteContent.projects.enTitle}
-                </h2>
-              </div>
-            </div>
-          </MotionSection>
-          <MotionStagger className="grid items-stretch gap-4 md:grid-cols-2 md:gap-6">
-            {siteContent.projects.items.map((project) => (
-              <MotionItem
-                key={project.id}
-                as="article"
-                className="section-card flex h-full flex-col p-4 sm:p-6 transition-transform duration-200 ease-out hover:-translate-y-0.5 hover:shadow-lg"
-              >
-                  <div className="flex-1">
-                  <div className="flex items-start gap-3">
-                  <div className="flex h-12 w-12 shrink-0 items-center justify-center overflow-hidden rounded-xl border border-white/10 bg-white/5">
-                    {project.logo === "placeholder" ? (
-                      <div className="rounded-lg bg-black/40 px-2 py-1 text-sm font-semibold tracking-tight text-white">
-                        TR
-                      </div>
-                    ) : (
-                      <Image
-                        src={withBasePath(project.logo)}
-                        alt={project.enTitle}
-                        width={48}
-                        height={48}
-                        className="h-full w-full object-contain p-2"
-                      />
-                    )}
-                  </div>
-                  <div>
-                    <h3 className={`text-lg font-semibold ${headingDark} sm:text-xl`}>
-                      {isArabic ? project.arTitle : project.enTitle}
-                    </h3>
-                    <p className={`text-sm ${mutedDark}`}>
-                      {isArabic && project.arOneLiner ? project.arOneLiner : project.oneLiner}
-                    </p>
-                  </div>
-                </div>
-                <ul className="mt-4 space-y-3">
-                  {(isArabic && project.arHighlights
-                    ? project.arHighlights
-                    : project.highlights
-                  ).map((highlight) => (
-                    <li key={highlight} className="flex items-start gap-3">
-                      <span className="mt-2 h-2 w-2 shrink-0 rounded-full bg-[#E0234E]" />
-                      <span className="text-sm leading-relaxed text-white/70">
-                        {highlight}
-                      </span>
-                    </li>
-                  ))}
-                </ul>
-                <div className="mt-4 flex flex-wrap gap-2">
-                  {project.stack.map((chip) => {
-                    const formattedChip = formatTagLabel(chip, isArabic);
-                    return (
-                      <span
-                        key={chip}
-                        className={`badge${
-                          isArabic && formattedChip.isTechnical ? " force-ltr" : ""
-                        }`}
-                        dir={isArabic && formattedChip.isTechnical ? "ltr" : undefined}
-                      >
-                        {formattedChip.text}
-                      </span>
-                    );
-                  })}
-                  {project.privateCode ? (
-                    <span className="badge border-nest-400/40 text-nest-300">
-                      Private code
-                    </span>
-                  ) : null}
-                </div>
-                </div>
-                <div className="mt-6 flex flex-wrap items-center gap-3">
-                  {project.liveUrl ? (
-                    <a
-                      className="primary-button"
-                      href={project.liveUrl}
-                      target="_blank"
-                      rel="noreferrer"
-                    >
-                      {project.liveLabel}
-                    </a>
-                  ) : null}
-                  {project.caseStudyHref ? (
-                    <Link className="glass-button" href={project.caseStudyHref}>
-                      {project.caseStudyLabel}
-                    </Link>
-                  ) : null}
-                </div>
-              </MotionItem>
-            ))}
-          </MotionStagger>
-        </div>
-      </Section>
-
-      <Section
-        id="other-projects"
-        variant="pink"
-        className="bg-gradient-to-b from-rose-50 via-rose-50/60 to-white"
-      >
-        <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6 sm:py-16">
-          <MotionSection>
-            <div className="mb-8 sm:mb-10">
-              <p className="text-xs uppercase tracking-[0.3em] text-nest-600">
-                {isArabic
-                  ? siteContent.labels.deepDives.ar
-                  : siteContent.labels.deepDives.en}
-              </p>
-              <h2 className="text-2xl font-semibold text-slate-900 sm:text-3xl">
-                {isArabic
-                  ? siteContent.labels.caseStudiesTitle.ar
-                  : siteContent.labels.caseStudiesTitle.en}
-              </h2>
-            </div>
-          </MotionSection>
-          <MotionStagger className="space-y-8 sm:space-y-10">
-            {siteContent.otherProjects.map((project) => {
-              const title = isArabic ? project.title.ar : project.title.en;
-              const summary = isArabic ? project.summary.ar : project.summary.en;
-              const bullets = isArabic ? project.bullets.ar : project.bullets.en;
-              const stackLabel = isArabic ? "التقنيات" : "Stack";
-              const stackLine = project.stack.join(" • ");
-              const demoLabel = isArabic ? "عرض تجريبي" : "Live demo";
-              const privateLabel = isArabic ? "مستودع خاص" : "Private repo";
-              const aiBulletText = isArabic
-                ? "توليد اختبارات اختيار من متعدد تفاعلية عبر Gemini Pro 2.5 API مع تصحيح/علامة تلقائية."
-                : "AI-generated interactive multiple-choice quizzes via Gemini Pro 2.5 API (auto scoring).";
-              return (
-                <MotionItem
-                  key={project.id}
-                  as="article"
-                  className="rounded-2xl border border-rose-200 bg-white/70 p-4 shadow-sm backdrop-blur transition-transform duration-200 ease-out hover:-translate-y-0.5 hover:shadow-lg sm:p-6"
-                >
-                    <h3 className="text-xl font-semibold text-slate-900 sm:text-2xl">
-                      {title}
-                    </h3>
-                    <p className="mt-3 text-sm text-slate-700 leading-relaxed">
-                      {summary}
-                    </p>
-                    <ul className="mt-4 space-y-2 text-sm text-slate-700 leading-relaxed">
-                      {bullets.map((bullet) => {
-                        const isAiBullet =
-                          project.id === "online-education-system" &&
-                          bullet === aiBulletText;
-                        return (
-                        <li key={bullet} className="flex items-start gap-2">
-                          <span className="mt-2 h-1.5 w-1.5 rounded-full bg-nest-400" />
-                          <span className="inline-flex flex-wrap items-center gap-2">
-                            <span>{bullet}</span>
-                            {isAiBullet ? (
-                              <span className="inline-flex items-center rounded-full border border-nest-400/50 bg-rose-50 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-[0.2em] text-nest-600">
-                                AI
-                              </span>
-                            ) : null}
-                          </span>
-                        </li>
-                        );
-                      })}
-                    </ul>
-                    <p className="mt-4 text-xs uppercase tracking-[0.2em] text-slate-500">
-                      {stackLabel}: {stackLine}
-                    </p>
-                    <div className="mt-6 flex flex-wrap gap-3">
-                      {project.links.demoUrl ? (
-                        <a
-                          className="inline-flex items-center gap-2 rounded-full bg-nest-600 px-4 py-2 text-sm font-semibold text-white shadow-sm transition hover:-translate-y-0.5 hover:brightness-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-nest-400/60 focus-visible:ring-offset-2 focus-visible:ring-offset-white cursor-pointer"
-                          href={project.links.demoUrl}
-                          target="_blank"
-                          rel="noreferrer"
-                          aria-label={`${demoLabel}: ${title}`}
-                        >
-                          {demoLabel}
-                        </a>
-                      ) : null}
-                      {project.repoPrivate ? (
-                        <span className="light-badge">{privateLabel}</span>
-                      ) : null}
-                    </div>
-                </MotionItem>
-              );
-            })}
-          </MotionStagger>
-        </div>
-      </Section>
-
-      <Highlights isArabic={isArabic} />
+      <WorkExperienceTimeline isArabic={isArabic} />
+      <ProjectsSection isArabic={isArabic} />
 
 
       <footer className="border-t border-white/5 py-10 text-center text-xs text-white/40">
