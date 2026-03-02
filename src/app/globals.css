@@ -76,6 +76,15 @@ main {
   unicode-bidi: isolate;
 }
 
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
 .hero-glow {
   position: absolute;
   left: 0;
@@ -189,11 +198,57 @@ main {
   animation: grain 8s steps(6) infinite;
 }
 
+@keyframes iconAuraDriftA {
+  0%,
+  100% {
+    transform: translate3d(-50%, -50%, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(-47%, -53%, 0) scale(1.04);
+  }
+}
+
+@keyframes iconAuraDriftB {
+  0%,
+  100% {
+    transform: translate3d(-50%, -50%, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(-53%, -48%, 0) scale(1.03);
+  }
+}
+
+.icon-aura-red {
+  background: radial-gradient(
+    circle at center,
+    rgba(244, 63, 94, 0.42) 0%,
+    rgba(224, 35, 78, 0.22) 38%,
+    rgba(224, 35, 78, 0) 70%
+  );
+  filter: blur(16px);
+  opacity: 0.72;
+  animation: iconAuraDriftA 9s ease-in-out infinite;
+}
+
+.icon-aura-dark {
+  background: radial-gradient(
+    circle at center,
+    rgba(8, 8, 12, 0.52) 0%,
+    rgba(8, 8, 12, 0.18) 45%,
+    rgba(8, 8, 12, 0) 78%
+  );
+  filter: blur(12px);
+  opacity: 0.55;
+  animation: iconAuraDriftB 11s ease-in-out infinite;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .animate-glowA,
   .animate-glowB,
   .animate-glowC,
-  .animate-grain {
+  .animate-grain,
+  .icon-aura-red,
+  .icon-aura-dark {
     animation: none !important;
   }
 }

@@ -13,7 +13,9 @@ import IconButton from "@/components/IconButton";
 import ScrollNavbar from "@/components/ScrollNavbar";
 import StackAndCapabilities from "@/components/StackAndCapabilities";
 import WorkExperienceTimeline from "@/components/experience/WorkExperienceTimeline";
+import HighlightsSection from "@/components/highlights/HighlightsSection";
 import ProjectsSection from "@/components/projects/ProjectsSection";
+import type { SectionVariant } from "@/components/Section";
 import { siteContent } from "@/content/siteContent";
 import { formatTagLabel } from "@/lib/formatTagLabel";
 import Reveal from "@/components/motion/Reveal";
@@ -21,6 +23,7 @@ import Reveal from "@/components/motion/Reveal";
 const LANG_KEY = "portfolio:lang";
 
 type Language = "en" | "ar";
+type HomeSectionKey = "stack" | "highlights" | "experience" | "projects";
 
 const socialIconMap = {
   github: FaGithub,
@@ -126,6 +129,32 @@ export default function Home() {
   }, []);
 
   const isArabic = language === "ar";
+  const sectionOrder: HomeSectionKey[] = ["stack", "highlights", "experience", "projects"];
+  const sectionVariantOverrides: Partial<Record<HomeSectionKey, SectionVariant>> = {
+    experience: "dark"
+  };
+  const sectionVariants = useMemo(() => {
+    const resolved: Record<HomeSectionKey, SectionVariant> = {
+      stack: "light",
+      highlights: "dark",
+      experience: "dark",
+      projects: "light"
+    };
+    let nextVariant: SectionVariant = "light";
+
+    for (const key of sectionOrder) {
+      const override = sectionVariantOverrides[key];
+      if (override) {
+        resolved[key] = override;
+        nextVariant = override === "light" ? "dark" : "light";
+      } else {
+        resolved[key] = nextVariant;
+        nextVariant = nextVariant === "light" ? "dark" : "light";
+      }
+    }
+
+    return resolved;
+  }, []);
   const navLinks = useMemo(
     () => (isArabic ? siteContent.nav.ar : siteContent.nav.en),
     [isArabic]
@@ -263,11 +292,10 @@ export default function Home() {
         </div>
       </section>
 
-      <StackAndCapabilities isArabic={isArabic} />
-
+      <StackAndCapabilities isArabic={isArabic} variant={sectionVariants.stack} />
+      <HighlightsSection isArabic={isArabic} variant={sectionVariants.highlights} />
       <WorkExperienceTimeline isArabic={isArabic} />
-      <ProjectsSection isArabic={isArabic} />
-
+      <ProjectsSection isArabic={isArabic} variant={sectionVariants.projects} />
 
       <footer className="border-t border-white/5 py-10 text-center text-xs text-white/40">
         <p>

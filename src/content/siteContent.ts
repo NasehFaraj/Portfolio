@@ -21,14 +21,129 @@ export const siteContent = {
     en: [
       { label: "Home", href: "#hero" },
       { label: "Stack & Capabilities", href: "#stack" },
+      { label: "Highlights", href: "#highlights" },
       { label: "Work Experience", href: "#experience" },
       { label: "Projects", href: "#other-projects" }
     ],
     ar: [
       { label: "الرئيسية", href: "#hero" },
       { label: "التقنيات", href: "#stack" },
+      { label: "الإنجازات", href: "#highlights" },
       { label: "الخبرة العملية", href: "#experience" },
       { label: "المشاريع", href: "#other-projects" }
+    ]
+  },
+  homeHighlights: {
+    chipLabel: { en: "HIGHLIGHTS", ar: "الإنجازات" },
+    title: { en: "HIGHLIGHTS", ar: "الإنجازات" },
+    subtitle: {
+      en: "Selected milestones and contributions that reflect impact.",
+      ar: "محطات ومساهمات مختارة تعكس الأثر."
+    },
+    categories: [
+      {
+        id: "open-source",
+        title: { en: "Open Source", ar: "المصدر المفتوح" },
+        summary: {
+          en: "Selected open-source contributions. Add new PRs here without touching existing entries.",
+          ar: "Selected open-source contributions. Add new PRs here without touching existing entries."
+        },
+        icon: "code",
+        items: [
+          {
+            id: "nestjs-pr-3390",
+            kind: "open_source_pr",
+            featured: true,
+            orgOrRepo: { en: "NestJS Framework", ar: "NestJS Framework" },
+            prNumber: 3390,
+            status: { en: "merged", ar: "merged" },
+            title: {
+              en: "Open Source Contributor | NestJS Framework",
+              ar: "Open Source Contributor | NestJS Framework"
+            },
+            bullets: {
+              en: [
+                {
+                  label: "Contribution",
+                  text: "Improved the official NestJS documentation by clarifying the cascading and inheritance behavior of application log levels."
+                },
+                {
+                  label: "Impact",
+                  text: "Resolved community confusion (Issue #3306) and streamlined the debugging process for thousands of developers worldwide."
+                },
+                {
+                  label: "Result",
+                  text: "Pull Request successfully reviewed and merged by the framework's creator, Kamil Myśliwiec."
+                }
+              ],
+              ar: [
+                {
+                  label: "Contribution",
+                  text: "Improved the official NestJS documentation by clarifying the cascading and inheritance behavior of application log levels."
+                },
+                {
+                  label: "Impact",
+                  text: "Resolved community confusion (Issue #3306) and streamlined the debugging process for thousands of developers worldwide."
+                },
+                {
+                  label: "Result",
+                  text: "Pull Request successfully reviewed and merged by the framework's creator, Kamil Myśliwiec."
+                }
+              ]
+            },
+            link: {
+              label: { en: "View Merged PR #3390", ar: "View Merged PR #3390" },
+              href: "PUT_REAL_URL_HERE"
+            }
+          }
+        ]
+      },
+      {
+        id: "competitions",
+        title: { en: "Competitions", ar: "المسابقات" },
+        summary: {
+          en: "Competitive programming milestones and achievements from ICPC-style contests.",
+          ar: "Competitive programming milestones and achievements from ICPC-style contests."
+        },
+        icon: "trophy",
+        items: [
+          {
+            id: "icpc-finals",
+            kind: "competition",
+            featured: false,
+            title: {
+              en: "ICPC Finalist (Regional Finals)",
+              ar: "ICPC Finalist (Regional Finals)"
+            },
+            tag: { en: "Regional Finals", ar: "Regional Finals" },
+            status: { en: "finalist", ar: "finalist" },
+            bullets: {
+              en: [
+                {
+                  text: "Reached the ICPC Regional Finals as a competitive programmer."
+                },
+                {
+                  text: "Strong problem-solving skills under time pressure and teamwork-focused contests."
+                },
+                {
+                  text: "Demonstrated mastery in algorithms, data structures, and optimization."
+                }
+              ],
+              ar: [
+                {
+                  text: "Reached the ICPC Regional Finals as a competitive programmer."
+                },
+                {
+                  text: "Strong problem-solving skills under time pressure and teamwork-focused contests."
+                },
+                {
+                  text: "Demonstrated mastery in algorithms, data structures, and optimization."
+                }
+              ]
+            }
+          }
+        ]
+      }
     ]
   },
   hero: {
