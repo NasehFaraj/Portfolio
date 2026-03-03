@@ -213,7 +213,7 @@ export default function HighlightsSection({
   };
 
   const renderMetaChips = (item: HighlightItem) => {
-    const status = item.status ? (isArabic ? item.status.ar : item.status.en).toUpperCase() : null;
+    const status = item.status ? (isArabic ? item.status.ar : item.status.en) : null;
     const tag = item.tag ? (isArabic ? item.tag.ar : item.tag.en) : null;
     const prNumber = item.prNumber ? `#${item.prNumber}` : null;
 
@@ -231,7 +231,11 @@ export default function HighlightsSection({
           </span>
         ) : null}
         {status ? (
-          <span className="inline-flex items-center rounded-full border border-emerald-400/35 bg-emerald-500/10 px-2.5 py-1 text-[11px] font-semibold uppercase tracking-[0.16em] text-emerald-300">
+          <span
+            className={`inline-flex items-center rounded-full border border-emerald-400/35 bg-emerald-500/10 px-2.5 py-1 text-[11px] font-semibold text-emerald-300 ${
+              isArabic ? "" : "uppercase tracking-[0.16em]"
+            }`}
+          >
             {status}
           </span>
         ) : null}
@@ -284,7 +288,11 @@ export default function HighlightsSection({
               </span>
               <div>
                 {orgOrRepo ? (
-                  <p className={`text-xs uppercase tracking-[0.22em] ${isDark ? "text-white/45" : "text-slate-500"}`}>
+                  <p
+                    className={`text-xs ${isArabic ? "" : "uppercase tracking-[0.22em]"} ${
+                      isDark ? "text-white/45" : "text-slate-500"
+                    }`}
+                  >
                     {orgOrRepo}
                   </p>
                 ) : null}
@@ -325,7 +333,7 @@ export default function HighlightsSection({
       <div
         dir={isArabic ? "rtl" : "ltr"}
         className={`relative mx-auto w-full max-w-6xl px-4 py-12 sm:px-6 sm:py-16 ${
-          isArabic ? "text-right" : "text-left"
+          isArabic ? "font-arabic text-right" : "text-left"
         }`}
       >
         <div
@@ -340,7 +348,9 @@ export default function HighlightsSection({
           <MotionSection>
             <div className="mb-8 sm:mb-10">
               <span
-                className={`inline-flex rounded-full px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.24em] ${
+                className={`inline-flex rounded-full px-3 py-1 text-[11px] font-semibold ${
+                  isArabic ? "" : "uppercase tracking-[0.24em]"
+                } ${
                   isDark
                     ? "border border-white/15 bg-white/5 text-nest-400"
                     : "border border-rose-200/80 bg-gradient-to-r from-white to-rose-50 text-nest-600"

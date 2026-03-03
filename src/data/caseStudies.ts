@@ -110,9 +110,9 @@ export const caseStudies: CaseStudy[] = [
         },
         chips: {
           roleLabel: "Role",
-          roleValue: "Backend Engineer",
+          roleValue: "Backend Engineer (Contract)",
           statusLabel: "Duration",
-          statusValue: "Feb 2025 - Present (1 year)",
+          statusValue: "Aug 2025 - Mar 2026",
           repoLabel: "",
           repoValue: "",
           liveLabel: "Live"
@@ -238,9 +238,9 @@ export const caseStudies: CaseStudy[] = [
         },
         chips: {
           roleLabel: "الدور",
-          roleValue: "مهندس Back-End",
+          roleValue: "Backend Engineer (Contract)",
           statusLabel: "المدة",
-          statusValue: "فبراير 2025 - حتى الآن (سنة واحدة)",
+          statusValue: "أغسطس 2025 - مارس 2026",
           repoLabel: "",
           repoValue: "",
           liveLabel: "الموقع"

@@ -67,8 +67,8 @@ export const experienceTimeline: TimelineEntry[] = [
     id: "trending-work",
     type: "work",
     title: {
-      en: "Backend Engineer (Full-time)",
-      ar: "مهندس Back-End (دوام كامل)"
+      en: "Backend Engineer (Contract)",
+      ar: "Backend Engineer (Contract)"
     },
     organization: {
       en: "Trending (E-commerce & Logistics)",
@@ -79,11 +79,11 @@ export const experienceTimeline: TimelineEntry[] = [
       ar: "عن بُعد"
     },
     dateRange: {
-      start: "2025-02",
-      end: "present",
+      start: "2025-08",
+      end: "2026-03",
       display: {
-        en: "Feb 2025 – Present",
-        ar: "فبراير 2025 – حتى الآن"
+        en: "Aug 2025 – Mar 2026",
+        ar: "أغسطس 2025 – مارس 2026"
       }
     },
     bullets: {

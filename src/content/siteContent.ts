@@ -5,13 +5,13 @@ export const siteContent = {
     name: "Naseh Faraj",
     nameAr: "ناصح فرج",
     title: "Software Engineer (Backend-focused) • NestJS",
-    titleAr: "مهندس برمجيات (يركز على الخلفية) • NestJS"
+    titleAr: "مهندس برمجيات (Backend-focused) • NestJS"
   },
   labels: {
     focusAreas: { en: "Focus Areas", ar: "مجالات التركيز" },
     focusTitle: {
       en: "Backend Engineering & Infrastructure",
-      ar: "هندسة الخلفية والبنية التحتية"
+      ar: "هندسة Backend والبنية التحتية"
     },
     selectWork: { en: "Work Experience", ar: "الخبرة العملية" },
     deepDives: { en: "Projects", ar: "المشاريع" },
@@ -38,7 +38,7 @@ export const siteContent = {
     title: { en: "HIGHLIGHTS", ar: "الإنجازات" },
     subtitle: {
       en: "Selected milestones and contributions that reflect impact.",
-      ar: "محطات ومساهمات مختارة تعكس الأثر."
+      ar: "محطات ومساهمات مختارة تبرز الأثر."
     },
     categories: [
       {
@@ -46,7 +46,7 @@ export const siteContent = {
         title: { en: "Open Source", ar: "المصدر المفتوح" },
         summary: {
           en: "Selected open-source contributions. Add new PRs here without touching existing entries.",
-          ar: "Selected open-source contributions. Add new PRs here without touching existing entries."
+          ar: "مساهمات مختارة في Open Source لها أثر واضح."
         },
         icon: "code",
         items: [
@@ -56,10 +56,10 @@ export const siteContent = {
             featured: true,
             orgOrRepo: { en: "NestJS Framework", ar: "NestJS Framework" },
             prNumber: 3390,
-            status: { en: "merged", ar: "merged" },
+            status: { en: "Merged", ar: "دُمجت" },
             title: {
               en: "Open Source Contributor | NestJS Framework",
-              ar: "Open Source Contributor | NestJS Framework"
+              ar: "مساهم في NestJS Framework"
             },
             bullets: {
               en: [
@@ -78,22 +78,22 @@ export const siteContent = {
               ],
               ar: [
                 {
-                  label: "Contribution",
-                  text: "Improved the official NestJS documentation by clarifying the cascading and inheritance behavior of application log levels."
+                  label: "المساهمة",
+                  text: "توضيح آلية inheritance لـ log levels في التوثيق الرسمي لـ NestJS."
                 },
                 {
-                  label: "Impact",
-                  text: "Resolved community confusion (Issue #3306) and streamlined the debugging process for thousands of developers worldwide."
+                  label: "الأثر",
+                  text: "إنهاء اللبس في المجتمع حول Issue #3306 وتسهيل debugging للمطورين."
                 },
                 {
-                  label: "Result",
-                  text: "Pull Request successfully reviewed and merged by the framework's creator, Kamil Myśliwiec."
+                  label: "النتيجة",
+                  text: "تمت مراجعة الـ PR ودمجه من منشئ الإطار Kamil Myśliwiec."
                 }
               ]
             },
             link: {
-              label: { en: "View Merged PR #3390", ar: "View Merged PR #3390" },
-              href: "PUT_REAL_URL_HERE"
+              label: { en: "View Merged PR #3390", ar: "عرض PR #3390" },
+              href: "https://github.com/nestjs/docs.nestjs.com/pull/3390"
             }
           }
         ]
@@ -103,7 +103,7 @@ export const siteContent = {
         title: { en: "Competitions", ar: "المسابقات" },
         summary: {
           en: "Competitive programming milestones and achievements from ICPC-style contests.",
-          ar: "Competitive programming milestones and achievements from ICPC-style contests."
+          ar: "محطات مهمة في Competitive Programming وحل المشكلات."
         },
         icon: "trophy",
         items: [
@@ -113,10 +113,10 @@ export const siteContent = {
             featured: false,
             title: {
               en: "ICPC Finalist (Regional Finals)",
-              ar: "ICPC Finalist (Regional Finals)"
+              ar: "ICPC Regional Finalist"
             },
             tag: { en: "Regional Finals", ar: "Regional Finals" },
-            status: { en: "finalist", ar: "finalist" },
+            status: { en: "finalist", ar: "متأهل" },
             bullets: {
               en: [
                 {
@@ -131,13 +131,13 @@ export const siteContent = {
               ],
               ar: [
                 {
-                  text: "Reached the ICPC Regional Finals as a competitive programmer."
+                  text: "الوصول إلى ICPC Regional Finals ضمن مسار Competitive Programming."
                 },
                 {
-                  text: "Strong problem-solving skills under time pressure and teamwork-focused contests."
+                  text: "حل مسائل خوارزمية معقدة تحت ضغط الوقت وفي بيئة تنافسية جماعية."
                 },
                 {
-                  text: "Demonstrated mastery in algorithms, data structures, and optimization."
+                  text: "بناء مستوى قوي في Algorithms وData Structures وتقنيات Optimization."
                 }
               ]
             }
@@ -156,11 +156,11 @@ export const siteContent = {
       ctaPrimary: "View Experience"
     },
     ar: {
-      subheadline: "واجهات آمنة • باك-إند قابل للتوسع • معمارية نظيفة",
+      subheadline: "واجهات API آمنة • Backend قابل للتوسع • Clean Architecture",
       academicLine:
-        "بكالوريوس هندسة/تقنية المعلومات (IT) — خلفية أكاديمية في علوم الحاسوب والأنظمة.",
+        "بكالوريوس هندسة/تقنية المعلومات (IT) — أساس أكاديمي قوي في علوم الحاسوب والأنظمة.",
       supportLine:
-        "خبرة بنية تحتية من مشاريع حقيقية: Docker، نشر على VPS، Nginx، HTTPS، وتقوية الخوادم.",
+        "خبرة عملية في Infrastructure: Docker، نشر على VPS، Nginx، HTTPS، وServer Hardening.",
       ctaPrimary: "عرض الخبرات"
     }
   },
@@ -432,8 +432,8 @@ export const siteContent = {
         id: "trending",
         enTitle: "Trending — E-commerce & Logistics",
         arTitle: "Trending — منصة تجارة إلكترونية ولوجستيات",
-        role: { en: "Backend Engineer", ar: "مهندس Back-End" },
-        duration: { en: "Feb 2025 - Present (1 year)", ar: "فبراير 2025 - حتى الآن (سنة واحدة)" },
+        role: { en: "Backend Engineer (Contract)", ar: "Backend Engineer (Contract)" },
+        duration: { en: "Aug 2025 - Mar 2026", ar: "أغسطس 2025 - مارس 2026" },
         logo: "placeholder",
         oneLiner:
           "Production backend ownership for a multi-role platform (customer/merchant/driver/admin), focused on backend architecture, RBAC APIs, and order/delivery workflows.",
