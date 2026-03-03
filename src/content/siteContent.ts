@@ -43,10 +43,10 @@ export const siteContent = {
     categories: [
       {
         id: "open-source",
-        title: { en: "Open Source", ar: "المصدر المفتوح" },
+        title: { en: "Open Source", ar: "مشاركات في مشاريع مفتوحة المصدر" },
         summary: {
           en: "Selected open-source contributions. Add new PRs here without touching existing entries.",
-          ar: "مساهمات مختارة في Open Source لها أثر واضح."
+          ar: "مساهمات مختارة في مشاريع مفتوحة المصدر لها أثر واضح."
         },
         icon: "code",
         items: [

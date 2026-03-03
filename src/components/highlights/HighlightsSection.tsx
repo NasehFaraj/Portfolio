@@ -63,6 +63,7 @@ function HighlightCategoryCard({
   count,
   Icon,
   isOpen,
+  isArabic,
   isDark,
   panelId,
   onClick,
@@ -73,6 +74,7 @@ function HighlightCategoryCard({
   count: number;
   Icon: ComponentType<{ className?: string }>;
   isOpen: boolean;
+  isArabic: boolean;
   isDark: boolean;
   panelId: string;
   onClick: () => void;
@@ -80,7 +82,9 @@ function HighlightCategoryCard({
 }) {
   return (
     <article
-      className={`group relative w-full overflow-hidden rounded-[1.75rem] border p-4 text-left transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-nest-500 focus-visible:ring-offset-2 ${
+      className={`group relative w-full overflow-hidden rounded-[1.75rem] border p-4 ${
+        isArabic ? "text-right" : "text-left"
+      } transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-nest-500 focus-visible:ring-offset-2 ${
         isDark ? "focus-visible:ring-offset-[#0B0D12]" : "focus-visible:ring-offset-white"
       } ${
         isOpen
@@ -105,7 +109,7 @@ function HighlightCategoryCard({
       <button
         type="button"
         onClick={onClick}
-        className="w-full text-left focus-visible:outline-none"
+        className={`w-full focus-visible:outline-none ${isArabic ? "text-right" : "text-left"}`}
         aria-expanded={isOpen}
         aria-controls={panelId}
       >
@@ -195,7 +199,10 @@ export default function HighlightsSection({
     return (
       <div className={`${compact ? "space-y-2" : "space-y-2.5"} text-sm leading-relaxed`}>
         {bullets.map((bullet, index) => (
-          <p key={`${item.id}-bullet-${index}`} className={isDark ? "text-white/75" : "text-slate-700"}>
+          <p
+            key={`${item.id}-bullet-${index}`}
+            className={`${isDark ? "text-white/75" : "text-slate-700"} ${isArabic ? "unicode-bidi-isolate leading-7" : ""}`}
+          >
             {bullet.label ? (
               <>
                 <span className={isDark ? "font-semibold text-white" : "font-semibold text-slate-900"}>
@@ -393,6 +400,7 @@ export default function HighlightsSection({
                   count={category.items.length}
                   Icon={Icon}
                   isOpen={isOpen}
+                  isArabic={isArabic}
                   isDark={isDark}
                   panelId={panelId}
                   onClick={() => {

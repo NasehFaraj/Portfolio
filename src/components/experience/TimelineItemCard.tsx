@@ -39,7 +39,7 @@ export default function TimelineItemCard({ entry, isArabic }: TimelineItemCardPr
     <article
       dir={isArabic ? "rtl" : "ltr"}
       className={`group relative overflow-hidden rounded-3xl border border-white/10 bg-night-800/72 p-4 shadow-card backdrop-blur transition-all duration-200 ease-out hover:-translate-y-0.5 hover:border-nest-400/45 hover:shadow-lg focus-within:-translate-y-0.5 focus-within:border-nest-400/45 focus-within:shadow-lg sm:p-6 ${
-        isArabic ? "text-right" : "text-left"
+        isArabic ? "font-arabic text-right" : "text-left"
       }`}
     >
       <div className="pointer-events-none absolute -top-20 right-0 h-44 w-44 rounded-full bg-[radial-gradient(circle,rgba(224,35,78,0.14)_0%,rgba(224,35,78,0)_70%)] opacity-0 transition-opacity duration-200 sm:-top-28 sm:h-56 sm:w-56 sm:bg-[radial-gradient(circle,rgba(224,35,78,0.22)_0%,rgba(224,35,78,0)_70%)] sm:group-hover:opacity-100 sm:group-focus-within:opacity-100" />
@@ -54,7 +54,11 @@ export default function TimelineItemCard({ entry, isArabic }: TimelineItemCardPr
                 {title}
               </h3>
               <p className="mt-1 break-words text-sm text-white/70">{org}</p>
-              <p className="mt-1 text-xs uppercase tracking-[0.18em] text-white/45 break-words">
+              <p
+                className={`mt-1 text-xs text-white/45 break-words ${
+                  isArabic ? "" : "uppercase tracking-[0.18em]"
+                }`}
+              >
                 {location}
               </p>
             </div>
@@ -92,7 +96,11 @@ export default function TimelineItemCard({ entry, isArabic }: TimelineItemCardPr
                   className={`flex items-start gap-2 ${isArabic ? "flex-row-reverse text-right" : ""}`}
                 >
                   <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[#E0234E]" />
-                  <span className="text-[13px] leading-6 text-white/75 sm:text-sm sm:leading-relaxed">
+                  <span
+                    className={`text-[13px] text-white/75 sm:text-sm sm:leading-relaxed ${
+                      isArabic ? "unicode-bidi-isolate leading-7" : "leading-6"
+                    }`}
+                  >
                     {bullet}
                   </span>
                 </li>
