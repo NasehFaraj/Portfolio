@@ -144,8 +144,8 @@ export const experienceTimeline: TimelineEntry[] = [
       ]
     },
     tags: {
-      en: ["Part-time", "AUST", "C++", "Node.js/Express"],
-      ar: ["دوام جزئي", "AUST", "C++", "Node.js/Express"]
+      en: ["C++", "Node.js/Express"],
+      ar: ["C++", "Node.js/Express"]
     }
   },
   {

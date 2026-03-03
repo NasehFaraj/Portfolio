@@ -34,6 +34,7 @@ export default function TimelineItemCard({ entry, isArabic }: TimelineItemCardPr
       ? entry.detailsLabel.ar
       : entry.detailsLabel.en
     : null;
+  const isTrendingRole = entry.id === "trending-work";
   return (
     <article
       dir={isArabic ? "rtl" : "ltr"}
@@ -132,7 +133,11 @@ export default function TimelineItemCard({ entry, isArabic }: TimelineItemCardPr
           <div className={`mt-1 flex ${isArabic ? "justify-end sm:justify-end" : "justify-start sm:justify-end"}`}>
             <Link
               href={entry.detailsHref}
-              className="inline-flex w-full items-center justify-center rounded-full border border-white/20 bg-white/5 px-4 py-2 text-sm font-semibold text-white/85 transition hover:border-nest-400/55 hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-nest-400/55 focus-visible:ring-offset-2 focus-visible:ring-offset-night-900 sm:w-auto"
+              className={`inline-flex w-full items-center justify-center rounded-full px-4 py-2 text-sm font-semibold transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-night-900 sm:w-auto ${
+                isTrendingRole
+                  ? "border border-rose-400/45 bg-gradient-to-r from-nest-600 to-rose-500 text-white shadow-[0_10px_24px_rgba(224,35,78,0.35)] hover:from-nest-500 hover:to-rose-400 hover:shadow-[0_12px_28px_rgba(224,35,78,0.45)] focus-visible:ring-rose-400/70"
+                  : "border border-white/20 bg-white/5 text-white/85 hover:border-nest-400/55 hover:bg-white/10 focus-visible:ring-nest-400/55"
+              }`}
             >
               {detailsLabel}
             </Link>

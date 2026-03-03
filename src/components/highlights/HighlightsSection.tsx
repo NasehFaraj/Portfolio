@@ -1,7 +1,8 @@
 "use client";
 
-import { type ComponentType, useMemo, useState } from "react";
+import { type ComponentType, useEffect, useState } from "react";
 import { ChevronDown, Code2, Trophy } from "lucide-react";
+import { SiNestjs } from "react-icons/si";
 import Section from "@/components/Section";
 import type { SectionVariant } from "@/components/Section";
 import { siteContent } from "@/content/siteContent";
@@ -79,18 +80,28 @@ function HighlightCategoryCard({
 }) {
   return (
     <article
-      className={`group relative w-full rounded-3xl border p-4 text-left transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-nest-500 focus-visible:ring-offset-2 ${
+      className={`group relative w-full overflow-hidden rounded-[1.75rem] border p-4 text-left transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-nest-500 focus-visible:ring-offset-2 ${
         isDark ? "focus-visible:ring-offset-[#0B0D12]" : "focus-visible:ring-offset-white"
       } ${
         isOpen
           ? isDark
-            ? "border-nest-500/60 bg-white/10 shadow-[0_0_0_1px_rgba(224,35,78,0.25),0_18px_32px_rgba(224,35,78,0.15)]"
-            : "border-nest-400/65 bg-rose-50/70 shadow-[0_0_0_1px_rgba(224,35,78,0.2),0_16px_30px_rgba(224,35,78,0.12)]"
+            ? "border-nest-500/60 bg-[linear-gradient(140deg,rgba(255,255,255,0.14),rgba(255,255,255,0.05))] shadow-[0_0_0_1px_rgba(224,35,78,0.24),0_30px_70px_rgba(224,35,78,0.18)]"
+            : "border-nest-400/65 bg-[linear-gradient(140deg,rgba(255,255,255,0.92),rgba(255,241,246,0.86))] shadow-[0_0_0_1px_rgba(224,35,78,0.18),0_22px_50px_rgba(224,35,78,0.14)]"
           : isDark
-            ? "border-white/10 bg-white/5 hover:border-white/20 hover:bg-white/[0.08]"
-            : "border-slate-200 bg-white hover:border-slate-300 hover:shadow-md"
+            ? "border-white/10 bg-white/[0.045] hover:border-white/25 hover:bg-white/[0.08]"
+            : "border-slate-200 bg-white/95 hover:border-slate-300 hover:shadow-md"
       }`}
     >
+      <span
+        aria-hidden
+        className={`pointer-events-none absolute inset-x-10 top-0 h-20 -translate-y-1/2 rounded-full blur-3xl transition-opacity duration-300 ${
+          isOpen
+            ? isDark
+              ? "bg-nest-500/30 opacity-90"
+              : "bg-nest-300/40 opacity-80"
+            : "opacity-0"
+        }`}
+      />
       <button
         type="button"
         onClick={onClick}
@@ -98,14 +109,14 @@ function HighlightCategoryCard({
         aria-expanded={isOpen}
         aria-controls={panelId}
       >
-        <div className="grid min-h-[136px] grid-cols-[104px_minmax(0,1fr)] items-center gap-4 sm:min-h-[148px] sm:grid-cols-[116px_minmax(0,1fr)]">
-          <div className="relative isolate flex h-24 w-24 items-center justify-center rounded-2xl border border-white/10 bg-white/5 sm:h-28 sm:w-28">
+        <div className="grid min-h-[124px] grid-cols-[88px_minmax(0,1fr)] items-center gap-4 sm:min-h-[140px] sm:grid-cols-[106px_minmax(0,1fr)] sm:gap-5">
+          <div className="relative isolate flex h-20 w-20 items-center justify-center rounded-2xl border border-white/10 bg-white/5 sm:h-24 sm:w-24">
             <IconAura />
-            <Icon className="relative z-10 h-12 w-12 text-nest-500" />
+            <Icon className="relative z-10 h-10 w-10 text-nest-500 sm:h-11 sm:w-11" />
           </div>
           <div className="min-w-0">
             <div className="flex items-start justify-between gap-3">
-              <h3 className={`text-lg font-semibold ${isDark ? "text-white" : "text-slate-900"}`}>{title}</h3>
+              <h3 className={`text-lg font-semibold sm:text-xl ${isDark ? "text-white" : "text-slate-900"}`}>{title}</h3>
               <div className="flex items-center gap-2">
                 <span
                   className={`inline-flex h-6 min-w-[1.5rem] items-center justify-center rounded-full px-2 text-xs font-semibold ${
@@ -144,7 +155,11 @@ function HighlightCategoryCard({
         }`}
       >
         <div className="overflow-hidden">
-          <div className={`border-t pt-5 ${isDark ? "border-white/10" : "border-slate-200"}`}>
+          <div
+            className={`rounded-2xl border pt-5 ${
+              isDark ? "border-white/10 bg-black/10" : "border-rose-100/90 bg-white/75"
+            }`}
+          >
             {children}
           </div>
         </div>
@@ -162,15 +177,18 @@ export default function HighlightsSection({
 }) {
   const content = siteContent.homeHighlights;
   const categories = content.categories as HighlightCategory[];
-  const [openCategoryId, setOpenCategoryId] = useState(categories[0]?.id ?? "");
+  const [openCategoryIds, setOpenCategoryIds] = useState<string[]>([]);
   const isDark = variant === "dark";
 
-  const getAccentRail = (item: HighlightItem) => {
-    if (item.kind === "competition") {
-      return "from-amber-400 via-yellow-300 to-orange-500";
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    const hash = window.location.hash.replace("#", "");
+    if (hash === "open-source") {
+      setOpenCategoryIds((prev) => (prev.includes("open-source") ? prev : [...prev, "open-source"]));
     }
-    return "from-nest-600 via-rose-500 to-pink-400";
-  };
+  }, []);
+
+  const getAccentRail = () => "from-nest-600 via-rose-500 to-pink-400";
 
   const renderBullets = (item: HighlightItem, compact = false) => {
     const bullets = isArabic ? item.bullets.ar : item.bullets.en;
@@ -236,24 +254,33 @@ export default function HighlightsSection({
     const title = isArabic ? item.title.ar : item.title.en;
     const orgOrRepo = item.orgOrRepo ? (isArabic ? item.orgOrRepo.ar : item.orgOrRepo.en) : null;
     const Icon = kindIconMap[item.kind as keyof typeof kindIconMap] ?? Code2;
+    const isNestContribution =
+      item.kind === "open_source_pr" && Boolean(item.orgOrRepo?.en?.toLowerCase().includes("nestjs"));
 
     return (
       <article
         className={`group relative overflow-hidden rounded-3xl p-5 sm:p-6 ${
           isDark
-            ? "border border-white/10 bg-white/5 shadow-[0_10px_30px_rgba(0,0,0,0.3)] hover:border-white/20 hover:shadow-[0_16px_35px_rgba(224,35,78,0.18)]"
-            : "border border-slate-200 bg-white shadow-[0_10px_30px_rgba(11,13,18,0.08)] hover:border-rose-300 hover:shadow-[0_16px_35px_rgba(224,35,78,0.12)]"
+            ? "border border-white/10 bg-[linear-gradient(140deg,rgba(255,255,255,0.1),rgba(255,255,255,0.03))] shadow-[0_18px_38px_rgba(0,0,0,0.34)] hover:border-white/20 hover:shadow-[0_24px_48px_rgba(224,35,78,0.2)]"
+            : "border border-slate-200 bg-[linear-gradient(140deg,rgba(255,255,255,1),rgba(255,244,248,0.7))] shadow-[0_14px_32px_rgba(11,13,18,0.1)] hover:border-rose-300 hover:shadow-[0_20px_42px_rgba(224,35,78,0.14)]"
         } transition-all duration-300 hover:-translate-y-0.5`}
       >
-        <span className={`absolute inset-y-4 left-3 w-[3px] rounded-full bg-gradient-to-b ${getAccentRail(item)}`} />
-        <div className="pl-4">
+        <span className="pointer-events-none absolute inset-x-8 top-0 h-16 -translate-y-1/2 rounded-full bg-nest-500/20 blur-2xl" />
+        <span
+          className={`absolute inset-y-4 ${isArabic ? "right-3" : "left-3"} w-[3px] rounded-full bg-gradient-to-b ${getAccentRail()}`}
+        />
+        <div className={isArabic ? "pr-4" : "pl-4"}>
           <div className="mb-3 flex flex-wrap items-start justify-between gap-3">
             <div className="flex items-start gap-4">
               <span className={`relative isolate mt-0.5 inline-flex shrink-0 items-center justify-center rounded-2xl ${
                 isDark ? "border border-white/15 bg-white/10" : "border border-slate-200 bg-white"
               } ${compact ? "h-16 w-16" : "h-20 w-20"}`}>
                 <IconAura compact={compact} />
-                <Icon className={`${compact ? "h-9 w-9" : "h-10 w-10"} relative z-10 text-nest-500`} />
+                {isNestContribution ? (
+                  <SiNestjs className={`${compact ? "h-8 w-8" : "h-9 w-9"} relative z-10 text-nest-500`} />
+                ) : (
+                  <Icon className={`${compact ? "h-9 w-9" : "h-10 w-10"} relative z-10 text-nest-500`} />
+                )}
               </span>
               <div>
                 {orgOrRepo ? (
@@ -331,10 +358,17 @@ export default function HighlightsSection({
             </div>
           </MotionSection>
 
-          <div className="mb-6 space-y-4 sm:mb-8" role="tablist" aria-label="Highlights categories">
+          <div
+            className={`mb-6 rounded-[2rem] border p-3 sm:mb-8 sm:p-4 ${
+              isDark
+                ? "border-white/10 bg-[linear-gradient(155deg,rgba(255,255,255,0.06),rgba(255,255,255,0.01))]"
+                : "border-slate-200 bg-[linear-gradient(155deg,rgba(255,255,255,0.95),rgba(255,244,248,0.75))]"
+            }`}
+          >
+            <div className="space-y-4" role="tablist" aria-label="Highlights categories">
               {categories.map((category) => {
                 const Icon = categoryIconMap[category.icon as keyof typeof categoryIconMap] ?? Code2;
-                const isOpen = category.id === openCategoryId;
+                const isOpen = openCategoryIds.includes(category.id);
               const label = isArabic ? category.title.ar : category.title.en;
                 const summary = isArabic ? category.summary.ar : category.summary.en;
                 const items = category.items;
@@ -352,11 +386,14 @@ export default function HighlightsSection({
                   isDark={isDark}
                   panelId={panelId}
                   onClick={() => {
-                    if (!isOpen) {
-                      setOpenCategoryId(category.id);
-                    }
+                    setOpenCategoryIds((prev) =>
+                      prev.includes(category.id)
+                        ? prev.filter((id) => id !== category.id)
+                        : [...prev, category.id]
+                    );
                   }}
                 >
+                  <span id={category.id} className="block h-0 w-0" aria-hidden />
                   {!featuredItem ? (
                     <div
                       className={`rounded-2xl border px-4 py-6 text-sm ${
@@ -382,6 +419,7 @@ export default function HighlightsSection({
                 </HighlightCategoryCard>
               );
             })}
+            </div>
           </div>
         </div>
       </div>
