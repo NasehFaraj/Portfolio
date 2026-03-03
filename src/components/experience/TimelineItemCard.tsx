@@ -93,7 +93,7 @@ export default function TimelineItemCard({ entry, isArabic }: TimelineItemCardPr
               {bullets.map((bullet) => (
                 <li
                   key={bullet}
-                  className={`flex items-start gap-2 ${isArabic ? "flex-row-reverse text-right" : ""}`}
+                  className={`flex items-start gap-2 ${isArabic ? "text-right" : ""}`}
                 >
                   <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[#E0234E]" />
                   <span
