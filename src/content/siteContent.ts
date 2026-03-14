@@ -95,6 +95,52 @@ export const siteContent = {
               label: { en: "View Merged PR #3390", ar: "عرض PR #3390" },
               href: "https://github.com/nestjs/docs.nestjs.com/pull/3390"
             }
+          },
+          {
+            id: "puppeteer-pr-14756",
+            kind: "open_source_pr",
+            featured: false,
+            orgOrRepo: { en: "GOOGLE PUPPETEER", ar: "GOOGLE PUPPETEER" },
+            prNumber: 14756,
+            status: { en: "Merged", ar: "دُمجت" },
+            title: {
+              en: "Open Source Contributor | Google Puppeteer",
+              ar: "Open Source Contributor | Google Puppeteer"
+            },
+            bullets: {
+              en: [
+                {
+                  label: "Contribution",
+                  text: "Added support for the PUPPETEER_DANGEROUS_NO_SANDBOX environment variable, enabling a global configuration to bypass sandbox restrictions without hardcoding browser launch arguments."
+                },
+                {
+                  label: "Impact",
+                  text: "Significantly streamlined CI/CD pipeline and Docker deployments for developers worldwide by providing a standardized, environment-level configuration for sandbox management."
+                },
+                {
+                  label: "Result",
+                  text: "Pull Request successfully reviewed and accepted by the Puppeteer maintainers."
+                }
+              ],
+              ar: [
+                {
+                  label: "المساهمة",
+                  text: "Added support for the PUPPETEER_DANGEROUS_NO_SANDBOX environment variable, enabling a global configuration to bypass sandbox restrictions without hardcoding browser launch arguments."
+                },
+                {
+                  label: "الأثر",
+                  text: "Significantly streamlined CI/CD pipeline and Docker deployments for developers worldwide by providing a standardized, environment-level configuration for sandbox management."
+                },
+                {
+                  label: "النتيجة",
+                  text: "Pull Request successfully reviewed and accepted by the Puppeteer maintainers."
+                }
+              ]
+            },
+            link: {
+              label: { en: "View PR #14756", ar: "عرض PR #14756" },
+              href: "https://github.com/puppeteer/puppeteer/pull/14756"
+            }
           }
         ]
       },

@@ -2,7 +2,7 @@
 
 import { type ComponentType, useEffect, useState } from "react";
 import { ChevronDown, Code2, Trophy } from "lucide-react";
-import { SiNestjs } from "react-icons/si";
+import { SiNestjs, SiPuppeteer } from "react-icons/si";
 import Section from "@/components/Section";
 import type { SectionVariant } from "@/components/Section";
 import { siteContent } from "@/content/siteContent";
@@ -267,6 +267,9 @@ export default function HighlightsSection({
     const Icon = kindIconMap[item.kind as keyof typeof kindIconMap] ?? Code2;
     const isNestContribution =
       item.kind === "open_source_pr" && Boolean(item.orgOrRepo?.en?.toLowerCase().includes("nestjs"));
+    const isPuppeteerContribution =
+      item.kind === "open_source_pr" &&
+      Boolean(item.id.toLowerCase().includes("puppeteer") || item.orgOrRepo?.en?.toLowerCase().includes("puppeteer"));
 
     return (
       <article
@@ -289,6 +292,8 @@ export default function HighlightsSection({
                 <IconAura compact={compact} />
                 {isNestContribution ? (
                   <SiNestjs className={`${compact ? "h-8 w-8" : "h-9 w-9"} relative z-10 text-nest-500`} />
+                ) : isPuppeteerContribution ? (
+                  <SiPuppeteer className={`${compact ? "h-8 w-8" : "h-9 w-9"} relative z-10 text-nest-500`} />
                 ) : (
                   <Icon className={`${compact ? "h-9 w-9" : "h-10 w-10"} relative z-10 text-nest-500`} />
                 )}
@@ -386,56 +391,59 @@ export default function HighlightsSection({
               {categories.map((category) => {
                 const Icon = categoryIconMap[category.icon as keyof typeof categoryIconMap] ?? Code2;
                 const isOpen = openCategoryIds.includes(category.id);
-              const label = isArabic ? category.title.ar : category.title.en;
+                const label = isArabic ? category.title.ar : category.title.en;
                 const summary = isArabic ? category.summary.ar : category.summary.en;
                 const items = category.items;
                 const featuredItem = items.find((item) => item.featured) ?? items[0];
                 const remainingItems = items.filter((item) => item.id !== featuredItem?.id);
+                const useCompactRemainingCards = category.id !== "open-source";
                 const panelId = `highlights-panel-${category.id}`;
-              return (
-                <HighlightCategoryCard
-                  key={category.id}
-                  title={label}
-                  summary={summary}
-                  count={category.items.length}
-                  Icon={Icon}
-                  isOpen={isOpen}
-                  isArabic={isArabic}
-                  isDark={isDark}
-                  panelId={panelId}
-                  onClick={() => {
-                    setOpenCategoryIds((prev) =>
-                      prev.includes(category.id)
-                        ? prev.filter((id) => id !== category.id)
-                        : [...prev, category.id]
-                    );
-                  }}
-                >
-                  <span id={category.id} className="block h-0 w-0" aria-hidden />
-                  {!featuredItem ? (
-                    <div
-                      className={`rounded-2xl border px-4 py-6 text-sm ${
-                        isDark
-                          ? "border-white/10 bg-white/5 text-white/70"
-                          : "border-slate-200 bg-white text-slate-600"
-                      }`}
-                    >
-                      {isArabic ? "لا توجد عناصر حالياً." : "No highlights in this category yet."}
-                    </div>
-                  ) : (
-                    <div className="mx-auto w-full max-w-5xl space-y-6">
-                      {renderCard(featuredItem)}
-                      {remainingItems.length ? (
-                        <MotionStagger className="space-y-6">
-                          {remainingItems.map((item) => (
-                            <MotionItem key={item.id}>{renderCard(item, true)}</MotionItem>
-                          ))}
-                        </MotionStagger>
-                      ) : null}
-                    </div>
-                  )}
-                </HighlightCategoryCard>
-              );
+                return (
+                  <HighlightCategoryCard
+                    key={category.id}
+                    title={label}
+                    summary={summary}
+                    count={category.items.length}
+                    Icon={Icon}
+                    isOpen={isOpen}
+                    isArabic={isArabic}
+                    isDark={isDark}
+                    panelId={panelId}
+                    onClick={() => {
+                      setOpenCategoryIds((prev) =>
+                        prev.includes(category.id)
+                          ? prev.filter((id) => id !== category.id)
+                          : [...prev, category.id]
+                      );
+                    }}
+                  >
+                    <span id={category.id} className="block h-0 w-0" aria-hidden />
+                    {!featuredItem ? (
+                      <div
+                        className={`rounded-2xl border px-4 py-6 text-sm ${
+                          isDark
+                            ? "border-white/10 bg-white/5 text-white/70"
+                            : "border-slate-200 bg-white text-slate-600"
+                        }`}
+                      >
+                        {isArabic ? "لا توجد عناصر حالياً." : "No highlights in this category yet."}
+                      </div>
+                    ) : (
+                      <div className="mx-auto w-full max-w-5xl space-y-6">
+                        {renderCard(featuredItem)}
+                        {remainingItems.length ? (
+                          <MotionStagger className="space-y-6">
+                            {remainingItems.map((item) => (
+                              <MotionItem key={item.id}>
+                                {renderCard(item, useCompactRemainingCards)}
+                              </MotionItem>
+                            ))}
+                          </MotionStagger>
+                        ) : null}
+                      </div>
+                    )}
+                  </HighlightCategoryCard>
+                );
             })}
             </div>
           </div>
