@@ -1,3 +1,4 @@
+import { GoRepo } from "react-icons/go";
 import type { OtherProject } from "@/data/otherProjects";
 import TagChips from "./TagChips";
 
@@ -34,7 +35,7 @@ export default function ProjectCard({ project, isArabic }: ProjectCardProps) {
     : links.demoUrl
       ? { href: links.demoUrl, label: isArabic ? "Open" : "Open" }
       : links.githubUrl
-        ? { href: links.githubUrl, label: isArabic ? "GitHub Repo" : "GitHub Repo" }
+        ? { href: links.githubUrl, label: isArabic ? "مستودع GitHub" : "GitHub Repository" }
         : null;
   const isGithubPrimaryAction =
     Boolean(links.githubUrl) && !links.demoUrl && !links.caseStudyUrl;
@@ -67,13 +68,15 @@ export default function ProjectCard({ project, isArabic }: ProjectCardProps) {
             href={primaryAction.href}
             target="_blank"
             rel="noreferrer"
+            aria-label={primaryAction.label}
+            title={primaryAction.label}
             className={
               isGithubPrimaryAction
-                ? "inline-flex shrink-0 items-center rounded-full border border-[#24292f] bg-[#24292f] px-4 py-2 text-sm font-semibold text-white shadow-sm transition hover:-translate-y-0.5 hover:border-black hover:bg-black focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#24292f]/40 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
+                ? "inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-[#24292f] bg-[#24292f] text-white shadow-sm transition hover:-translate-y-0.5 hover:border-black hover:bg-black focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#24292f]/40 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
                 : "inline-flex shrink-0 items-center rounded-full border border-nest-400/45 bg-white px-4 py-2 text-sm font-semibold text-nest-700 transition hover:-translate-y-0.5 hover:border-nest-500/70 hover:bg-rose-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-nest-400/50 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
             }
           >
-            {primaryAction.label}
+            {isGithubPrimaryAction ? <GoRepo className="h-4 w-4" aria-hidden="true" /> : primaryAction.label}
           </a>
         ) : null}
       </div>
