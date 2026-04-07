@@ -34,17 +34,20 @@ export default function ProjectCard({ project, isArabic }: ProjectCardProps) {
     : links.demoUrl
       ? { href: links.demoUrl, label: isArabic ? "Open" : "Open" }
       : links.githubUrl
-        ? { href: links.githubUrl, label: isArabic ? "GitHub" : "GitHub" }
+        ? { href: links.githubUrl, label: isArabic ? "GitHub Repo" : "GitHub Repo" }
         : null;
+  const isGithubPrimaryAction =
+    Boolean(links.githubUrl) && !links.demoUrl && !links.caseStudyUrl;
 
   return (
     <div className="group relative flex h-full flex-col overflow-hidden rounded-3xl border border-rose-200/80 bg-white/75 p-5 shadow-sm backdrop-blur transition-all duration-200 ease-out hover:-translate-y-0.5 hover:border-nest-400/55 hover:shadow-lg focus-within:-translate-y-0.5 focus-within:border-nest-400/55 focus-within:shadow-lg sm:p-6">
       <div className="pointer-events-none absolute -inset-10 rounded-[2rem] bg-[radial-gradient(circle_at_top,rgba(224,35,78,0.12),transparent_55%)] opacity-0 transition-opacity duration-200 group-hover:opacity-100 group-focus-within:opacity-100" />
 
-      <div className={`relative flex items-start gap-4 ${hasBadges ? "justify-between" : ""}`}>
-        <h3 className="text-lg font-semibold text-slate-900 sm:text-xl">{title}</h3>
-        {hasBadges ? (
-          <div className="flex flex-wrap justify-end gap-2">
+      <div className="relative flex items-start justify-between gap-4">
+        <div className="min-w-0 flex-1">
+          <h3 className="text-lg font-semibold text-slate-900 sm:text-xl">{title}</h3>
+          {hasBadges ? (
+            <div className="mt-3 flex flex-wrap gap-2">
             {badges.map((badge) => (
               <a
                 key={`${project.id}-${badge.label}`}
@@ -56,7 +59,22 @@ export default function ProjectCard({ project, isArabic }: ProjectCardProps) {
                 {badge.label}
               </a>
             ))}
-          </div>
+            </div>
+          ) : null}
+        </div>
+        {primaryAction ? (
+          <a
+            href={primaryAction.href}
+            target="_blank"
+            rel="noreferrer"
+            className={
+              isGithubPrimaryAction
+                ? "inline-flex shrink-0 items-center rounded-full border border-[#24292f] bg-[#24292f] px-4 py-2 text-sm font-semibold text-white shadow-sm transition hover:-translate-y-0.5 hover:border-black hover:bg-black focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#24292f]/40 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
+                : "inline-flex shrink-0 items-center rounded-full border border-nest-400/45 bg-white px-4 py-2 text-sm font-semibold text-nest-700 transition hover:-translate-y-0.5 hover:border-nest-500/70 hover:bg-rose-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-nest-400/50 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
+            }
+          >
+            {primaryAction.label}
+          </a>
         ) : null}
       </div>
 
@@ -84,18 +102,8 @@ export default function ProjectCard({ project, isArabic }: ProjectCardProps) {
         })}
       </ul>
 
-      <div className="relative mt-auto flex flex-wrap items-end justify-between gap-4 pt-5">
+      <div className="relative mt-auto pt-5">
         <TagChips stack={project.stack} isArabic={isArabic} />
-        {primaryAction ? (
-          <a
-            href={primaryAction.href}
-            target="_blank"
-            rel="noreferrer"
-            className="inline-flex items-center rounded-full border border-nest-400/45 bg-white px-4 py-2 text-sm font-semibold text-nest-700 transition hover:-translate-y-0.5 hover:border-nest-500/70 hover:bg-rose-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-nest-400/50 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
-          >
-            {primaryAction.label}
-          </a>
-        ) : null}
       </div>
     </div>
   );
