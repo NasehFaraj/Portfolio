@@ -10,16 +10,15 @@ export default function ProjectCard({ project, isArabic }: ProjectCardProps) {
   const title = isArabic ? project.title.ar : project.title.en;
   const summary = isArabic ? project.summary.ar : project.summary.en;
   const bullets = (isArabic ? project.bullets.ar : project.bullets.en).slice(0, 3);
-  const links = project.links as OtherProject["links"] & {
-    githubUrl?: string;
-    caseStudyUrl?: string;
-  };
+  const links = project.links as OtherProject["links"] & { caseStudyUrl?: string };
   const aiBulletText = isArabic
     ? "توليد اختبارات اختيار من متعدد تفاعلية عبر Gemini Pro 2.5 API مع تصحيح/علامة تلقائية."
     : "AI-generated interactive multiple-choice quizzes via Gemini Pro 2.5 API (auto scoring).";
+  const shouldShowGithubBadge =
+    Boolean(links.githubUrl) && Boolean(links.demoUrl || links.caseStudyUrl);
   const badges = [
     links.demoUrl ? { label: isArabic ? "Live" : "Live", href: links.demoUrl } : null,
-    links.githubUrl
+    shouldShowGithubBadge
       ? { label: isArabic ? "GitHub" : "GitHub", href: links.githubUrl }
       : null,
     links.caseStudyUrl
@@ -35,7 +34,7 @@ export default function ProjectCard({ project, isArabic }: ProjectCardProps) {
     : links.demoUrl
       ? { href: links.demoUrl, label: isArabic ? "Open" : "Open" }
       : links.githubUrl
-        ? { href: links.githubUrl, label: isArabic ? "Open" : "Open" }
+        ? { href: links.githubUrl, label: isArabic ? "GitHub" : "GitHub" }
         : null;
 
   return (

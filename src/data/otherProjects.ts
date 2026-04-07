@@ -15,10 +15,60 @@ export type OtherProject = {
   stack: string[];
   links: {
     demoUrl?: string;
+    githubUrl?: string;
   };
 };
 
 export const otherProjects: OtherProject[] = [
+  {
+    id: "real-estate",
+    title: {
+      en: "real-estate",
+      ar: "real-estate"
+    },
+    summary: {
+      en:
+        "A smart real estate operations API that matches property offers with client requests, manages broker workflows, and provides secure role-based access for teams.",
+      ar:
+        "واجهة API ذكية لعمليات العقارات تطابق عروض العقارات مع طلبات العملاء، وتدير سير عمل الوسطاء، وتوفر صلاحيات وصول آمنة حسب الدور للفرق."
+    },
+    bullets: {
+      en: [
+        "Matches property offers with client requests automatically.",
+        "Role-based workflows for admin, manager, and broker.",
+        "Secure authentication with access and refresh tokens.",
+        "Filtering, pagination, and statistics endpoints for operational insights.",
+        "Swagger documentation and Docker-based local development.",
+        "Automated testing with Vitest and API integration coverage.",
+        "CI pipeline on GitHub Actions for continuous verification.",
+        "Code quality checks with ESLint, Prettier, and TypeScript type checking."
+      ],
+      ar: [
+        "مطابقة عروض العقارات مع طلبات العملاء بشكل تلقائي.",
+        "سير عمل حسب الدور لكل من admin وmanager وbroker.",
+        "مصادقة آمنة باستخدام access tokens وrefresh tokens.",
+        "واجهات فلترة وترقيم صفحات وإحصائيات للحصول على رؤى تشغيلية.",
+        "توثيق Swagger وتشغيل محلي عبر Docker.",
+        "اختبارات آلية باستخدام Vitest مع تغطية لتكامل الـ API.",
+        "خط CI على GitHub Actions للتحقق المستمر.",
+        "فحوصات جودة عبر ESLint وPrettier وTypeScript type checking."
+      ]
+    },
+    stack: [
+      "Express (TypeScript/ESM)",
+      "MongoDB/Mongoose",
+      "JWT",
+      "Swagger",
+      "Vitest",
+      "Docker",
+      "GitHub Actions",
+      "ESLint",
+      "Prettier"
+    ],
+    links: {
+      githubUrl: "https://github.com/NasehFaraj/real-estate"
+    }
+  },
   {
     id: "online-education-system",
     title: {

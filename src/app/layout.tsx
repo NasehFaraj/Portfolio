@@ -24,8 +24,11 @@ const tajawal = localFont({
 });
 
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL ?? "https://nasehfaraj.github.io").replace(/\/$/, "");
+const metadataBase = new URL(siteUrl);
 
 export const metadata: Metadata = {
+  metadataBase,
   title: "Naseh Faraj | Software Engineer (Backend-focused)",
   description:
     "Backend-focused software engineer specializing in NestJS and Node.js with infrastructure and deployment experience.",
@@ -33,7 +36,7 @@ export const metadata: Metadata = {
     title: "Naseh Faraj | Portfolio",
     description:
       "Backend-focused software engineer specializing in NestJS and Node.js with infrastructure and deployment experience.",
-    url: "https://github.com/NasehFaraj",
+    url: `${siteUrl}${basePath}/`,
     siteName: "Naseh Faraj Portfolio",
     images: [
       {
